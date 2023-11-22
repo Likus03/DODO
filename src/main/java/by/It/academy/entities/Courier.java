@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Courier {
-    private String firstName;
+    private String firstname;
     private String surname;
     private String phoneNumber;
     private String deliveryType;
