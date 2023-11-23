@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Manager {
-    private String firstName;
+    private String firstname;
     private String surname;
     private String phoneNumber;
 }

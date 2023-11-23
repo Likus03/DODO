@@ -21,6 +21,6 @@ public class ReadCourierController extends HttpServlet {
         List<Courier> couriers = courierService.readCourier();
 
         req.setAttribute("couriers", couriers);
-        req.getRequestDispatcher("/pages/couriers/couriers.jsp").forward(req, resp);//todo не забыть про webapp
+        req.getRequestDispatcher("/pages/couriers/couriers.jsp").forward(req, resp);
     }
 }
