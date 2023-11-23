@@ -1,4 +1,4 @@
-package by.It.academy.services;
+package by.It.academy.services.courier;
 
 import by.It.academy.entities.Courier;
 

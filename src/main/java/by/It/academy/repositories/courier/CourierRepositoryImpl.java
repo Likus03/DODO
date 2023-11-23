@@ -1,6 +1,7 @@
-package by.It.academy.repositories;
+package by.It.academy.repositories.courier;
 
 import by.It.academy.entities.Courier;
+import by.It.academy.repositories.courier.CourierRepository;
 
 import java.util.List;
 

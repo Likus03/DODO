@@ -1,8 +1,8 @@
-package by.It.academy.controllers;
+package by.It.academy.controllers.courier;
 
 import by.It.academy.entities.Courier;
-import by.It.academy.services.CourierService;
-import by.It.academy.services.CourierServiceImpl;
+import by.It.academy.services.courier.CourierService;
+import by.It.academy.services.courier.CourierServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
