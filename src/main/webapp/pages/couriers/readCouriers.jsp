@@ -3,9 +3,16 @@
 <html>
 <head>
     <title>Couriers</title>
+    <style type="text/css">
+        th {
+            color:lightblue;
+            font-family:Arial
+        }
+    </style>
+
 </head>
 <body>
-<table>
+<table width="50%" border="1" rules="all">
     <thead>
     <tr>
         <th>NAME</th>

@@ -14,13 +14,19 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/kitchenWorkers/read")
 public class ReadKitchenWorkerController extends HttpServlet {
-    private KitchenWorkerService kitchenWorkerService = new KitchenWorkerServiceImpl();
+    private static final String KITCHEN_WORKERS_PAGE = "/pages/kitchenWorkers/readKitchenWorkers.jsp";
+    private final KitchenWorkerService kitchenWorkerService = KitchenWorkerServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<KitchenWorker> kitchenWorkers = kitchenWorkerService.readKitchenWorker();
 
         req.setAttribute("kitchenWorkers", kitchenWorkers);
-        req.getRequestDispatcher("/pages/kitchenWorkers/kitchenWorkers.jsp").forward(req, resp);
+        req.getRequestDispatcher(KITCHEN_WORKERS_PAGE).forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

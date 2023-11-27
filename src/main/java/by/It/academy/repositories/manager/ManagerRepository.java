@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ManagerRepository {
     List<Manager> readManager();
+
+    Manager createManager(Manager manager);
 }

@@ -1,7 +1,6 @@
 package by.It.academy.controllers.manager;
 
 import by.It.academy.entities.Manager;
-import by.It.academy.services.manager.ManagerApiService;
 import by.It.academy.services.manager.ManagerService;
 import by.It.academy.services.manager.ManagerServiceImpl;
 
@@ -15,13 +14,19 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/managers/read")
 public class ReadManagerController extends HttpServlet {
-    private ManagerService managerService = new ManagerServiceImpl();
+    private static final String MANAGERS_PAGE = "/pages/managers/readManagers.jsp";
+    private ManagerService managerService = ManagerServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Manager> managers = managerService.readManager();
 
         req.setAttribute("managers", managers);
-        req.getRequestDispatcher("/pages/managers/managers.jsp").forward(req, resp);
+        req.getRequestDispatcher(MANAGERS_PAGE).forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

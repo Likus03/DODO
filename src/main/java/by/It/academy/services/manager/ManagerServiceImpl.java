@@ -7,7 +7,19 @@ import by.It.academy.repositories.manager.ManagerRepositoryImpl;
 import java.util.List;
 
 public class ManagerServiceImpl implements ManagerService{
-    private final ManagerRepository managerRepository = new ManagerRepositoryImpl();
+    private final ManagerRepository managerRepository = ManagerRepositoryImpl.getInstance();
+    private static ManagerService managerService;
+
+    private ManagerServiceImpl(){}
+    @Override
+    public Manager createManager(Manager manager){return managerRepository.createManager(manager);}
+
+    public static ManagerService getInstance() {
+        if(managerService == null){
+            managerService = new ManagerServiceImpl();
+        }
+        return managerService;
+    }
 
     @Override
     public List<Manager> readManager() {

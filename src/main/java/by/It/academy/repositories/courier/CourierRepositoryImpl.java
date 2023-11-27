@@ -1,15 +1,29 @@
 package by.It.academy.repositories.courier;
 
 import by.It.academy.entities.Courier;
-import by.It.academy.repositories.courier.CourierRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourierRepositoryImpl implements CourierRepository {
-    private final List<Courier> couriers = List.of(
-            new Courier("Slava", "Petrov", "41451464", "auto"),
-            new Courier()
-    );
+    private static CourierRepository courierRepository;
+    private final List<Courier> couriers = new ArrayList<>();
+
+    private CourierRepositoryImpl(){}
+    @Override
+    public Courier createCourier(Courier courier) {
+        courier.setId((long) couriers.size() + 1);
+        couriers.add(courier);
+        return courier;
+    }
+
+    public static CourierRepository getInstance() {
+        if(courierRepository == null){
+            courierRepository = new CourierRepositoryImpl();
+        }
+        return courierRepository;
+    }
+
     @Override
     public List<Courier> readCourier() {
         return couriers;

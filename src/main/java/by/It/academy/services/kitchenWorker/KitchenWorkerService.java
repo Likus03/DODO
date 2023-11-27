@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface KitchenWorkerService {
     List<KitchenWorker> readKitchenWorker();
+
+    KitchenWorker createKitchenWorker(KitchenWorker kitchenWorker);
 }

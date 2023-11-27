@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CourierService {
     List<Courier> readCourier();
+
+    Courier createCourier(Courier courier);
 }

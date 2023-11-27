@@ -5,5 +5,7 @@ import by.It.academy.entities.Manager;
 import java.util.List;
 
 public interface ManagerService {
+    Manager createManager(Manager manager);
+
     List<Manager> readManager();
 }
