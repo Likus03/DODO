@@ -8,4 +8,6 @@ public interface CourierService {
     List<Courier> readCourier();
 
     Courier createCourier(Courier courier);
+
+    Courier updateCourier(Courier courier);
 }

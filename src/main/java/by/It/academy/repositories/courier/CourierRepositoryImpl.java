@@ -7,9 +7,11 @@ import java.util.List;
 
 public class CourierRepositoryImpl implements CourierRepository {
     private static CourierRepository courierRepository;
-    private final List<Courier> couriers = new ArrayList<>();
+    private static final List<Courier> couriers = new ArrayList<>();
 
-    private CourierRepositoryImpl(){}
+    private CourierRepositoryImpl() {
+    }
+
     @Override
     public Courier createCourier(Courier courier) {
         courier.setId((long) couriers.size() + 1);
@@ -18,7 +20,7 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
 
     public static CourierRepository getInstance() {
-        if(courierRepository == null){
+        if (courierRepository == null) {
             courierRepository = new CourierRepositoryImpl();
         }
         return courierRepository;
@@ -27,5 +29,11 @@ public class CourierRepositoryImpl implements CourierRepository {
     @Override
     public List<Courier> readCourier() {
         return couriers;
+    }
+
+    @Override
+    public Courier updateCourier(Courier courier) {
+        couriers.set(Integer.valueOf(Math.toIntExact(courier.getId())) - 1, courier);
+        return courier;
     }
 }

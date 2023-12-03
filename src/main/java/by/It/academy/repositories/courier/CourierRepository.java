@@ -9,4 +9,6 @@ public interface CourierRepository {
     List<Courier> readCourier();
 
     Courier createCourier(Courier courier);
+
+    Courier updateCourier(Courier courier);
 }

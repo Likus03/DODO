@@ -30,4 +30,8 @@ public class CourierServiceImpl implements CourierService {
         return courierService;
     }
 
+    @Override
+    public Courier updateCourier(Courier courier) {
+        return courierRepository.updateCourier(courier);
+    }
 }

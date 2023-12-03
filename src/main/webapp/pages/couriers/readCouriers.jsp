@@ -3,10 +3,11 @@
 <html>
 <head>
     <title>Couriers</title>
+
     <style type="text/css">
         th {
-            color:lightblue;
-            font-family:Arial
+            color: lightblue;
+            font-family: Arial
         }
     </style>
 
@@ -22,15 +23,22 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="couriers" items="${couriers}">
+    <form action="/couriers/update" method="post">
+        <c:forEach var="couriers" items="${couriers}">
         <tr>
             <td>${couriers.firstname}</td>
             <td>${couriers.surname}</td>
             <td>${couriers.phoneNumber}</td>
             <td>${couriers.deliveryType}</td>
+            <td><input type="radio" id="${couriers.id}" name="radioGroup" value="${couriers.id}"></td>
         </tr>
-    </c:forEach>
+        </c:forEach>
+
     </tbody>
 </table>
+<td><input type="submit" name="editUser" value="delete"></td>
+<td><input type="submit" name="editUser" value="update"></td>
+
 </body>
+
 </html>

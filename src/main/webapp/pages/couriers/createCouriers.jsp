@@ -1,4 +1,5 @@
 <html>
+<title>Create courier</title>
 <head>Create new Courier</head>
 <body>
 <table>

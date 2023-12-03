@@ -15,11 +15,14 @@ import java.util.List;
 @WebServlet(urlPatterns = "/couriers/read")
 public class ReadCourierController extends HttpServlet {
     private static final String COURIERS_PAGE = "/pages/couriers/readCouriers.jsp";
+
     private final CourierService courierService = CourierServiceImpl.getInstance();
+
+    List<Courier> couriers;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Courier> couriers = courierService.readCourier();
+        couriers = courierService.readCourier();
 
         req.setAttribute("couriers", couriers);
         req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
@@ -27,6 +30,9 @@ public class ReadCourierController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+        Courier courier = new Courier(Long.valueOf(req.getParameter("id")), req.getParameter("firstname"), req.getParameter("surname"), req.getParameter("phoneNumber"), req.getParameter("deliveryType"));
+        courierService.updateCourier(courier);
+
+        doGet(req,resp);
     }
 }
