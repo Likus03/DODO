@@ -33,12 +33,9 @@
             <td><input type="radio" id="${couriers.id}" name="radioGroup" value="${couriers.id}"></td>
         </tr>
         </c:forEach>
-
     </tbody>
 </table>
 <td><input type="submit" name="editCourier" value="delete"></td>
 <td><input type="submit" name="editCourier" value="update"></td>
-
 </body>
-
 </html>

@@ -29,8 +29,6 @@
       <td>${kitchenWorkers.phoneNumber}</td>
       <td>${kitchenWorkers.typeEmployee}</td>
       <td><input type="radio" id="${kitchenWorkers.id}" name="radioGroup" value="${kitchenWorkers.id}"></td>
-      <td>${kitchenWorkers.id}</td>
-
     </tr>
   </c:forEach>
   </tbody>

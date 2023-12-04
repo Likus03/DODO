@@ -1,5 +1,5 @@
 <html>
-<head>Create new Courier</head>
+<head>Create new Manager</head>
 <body>
 <table>
     <thead>

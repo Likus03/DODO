@@ -8,4 +8,6 @@ public interface ManagerService {
     Manager createManager(Manager manager);
 
     List<Manager> readManager();
+
+    Manager updateManager(Manager manager);
 }

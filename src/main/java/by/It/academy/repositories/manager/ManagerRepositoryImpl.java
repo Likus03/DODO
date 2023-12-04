@@ -31,4 +31,10 @@ public class ManagerRepositoryImpl implements ManagerRepository{
         }
         return managerRepository;
     }
+
+    @Override
+    public Manager updateManager(Manager manager) {
+        managers.set((int) (manager.getId() - 1), manager);
+        return manager;
+    }
 }

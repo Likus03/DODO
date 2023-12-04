@@ -23,7 +23,7 @@ public class CreateManagerController extends HttpServlet {
         Manager manager = managerMapper.buildUser(req);
         managerService.createManager(manager);
 
-        req.getRequestDispatcher("/managers/read").forward(req, resp);
+        req.getRequestDispatcher(MANAGERS_PAGE).forward(req, resp);
     }
 
     @Override

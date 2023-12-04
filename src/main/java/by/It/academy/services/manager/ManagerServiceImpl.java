@@ -1,5 +1,6 @@
 package by.It.academy.services.manager;
 
+import by.It.academy.entities.Courier;
 import by.It.academy.entities.Manager;
 import by.It.academy.repositories.manager.ManagerRepository;
 import by.It.academy.repositories.manager.ManagerRepositoryImpl;
@@ -24,5 +25,10 @@ public class ManagerServiceImpl implements ManagerService{
     @Override
     public List<Manager> readManager() {
         return managerRepository.readManager();
+    }
+
+    @Override
+    public Manager updateManager(Manager manager) {
+        return managerRepository.updateManager(manager);
     }
 }

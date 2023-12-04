@@ -8,4 +8,6 @@ public interface ManagerRepository {
     List<Manager> readManager();
 
     Manager createManager(Manager manager);
+
+    Manager updateManager(Manager manager);
 }

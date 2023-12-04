@@ -1,6 +1,9 @@
 package by.It.academy.controllers.manager;
 
+import by.It.academy.entities.Courier;
 import by.It.academy.entities.Manager;
+import by.It.academy.mapper.courier.CourierMapper;
+import by.It.academy.mapper.manager.ManagerMapper;
 import by.It.academy.services.manager.ManagerService;
 import by.It.academy.services.manager.ManagerServiceImpl;
 
@@ -16,10 +19,13 @@ import java.util.List;
 public class ReadManagerController extends HttpServlet {
     private static final String MANAGERS_PAGE = "/pages/managers/readManagers.jsp";
     private ManagerService managerService = ManagerServiceImpl.getInstance();
+    private final ManagerMapper managerMapper = new ManagerMapper();
+
+    List<Manager> managers;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Manager> managers = managerService.readManager();
+        managers = managerService.readManager();
 
         req.setAttribute("managers", managers);
         req.getRequestDispatcher(MANAGERS_PAGE).forward(req, resp);
@@ -29,6 +35,12 @@ public class ReadManagerController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=utf-8");
+
+        Long id = Long.valueOf(req.getParameter("id"));
+        Manager manager = managerMapper.buildUser(req);
+        manager.setId(id);
+
+        managerService.updateManager(manager);
 
         doGet(req, resp);
     }
