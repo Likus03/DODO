@@ -1,7 +1,6 @@
 package by.It.academy.controllers.kitchenWorker;
 
 import by.It.academy.entities.KitchenWorker;
-import by.It.academy.mapper.kitchenWorker.KitchenWorkerMapper;
 import by.It.academy.services.kitchenWorker.KitchenWorkerService;
 import by.It.academy.services.kitchenWorker.KitchenWorkerServiceImpl;
 
@@ -11,23 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(urlPatterns = "/kitchenWorkers/create")
-public class CreateKitchenWorkerController extends HttpServlet {
-    private static final String KITCHEN_WORKERS_PAGE = "/pages/kitchenWorkers/createKitchenWorkers.jsp";
+@WebServlet(urlPatterns = "/kitchenWorkers/update")
+public class UpdateKitchenWorkerController extends HttpServlet {
+    private static final String KITCHEN_WORKER_PAGE = "/pages/kitchenWorkers/updateKitchenWorkers.jsp";
+    List<KitchenWorker> kitchenWorkers;
     private final KitchenWorkerService kitchenWorkerService = KitchenWorkerServiceImpl.getInstance();
-    private final KitchenWorkerMapper kitchenWorkerMapper = new KitchenWorkerMapper();
+    private String id;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        KitchenWorker kitchenWorker = kitchenWorkerMapper.buildUser(req);
-        kitchenWorkerService.createKitchenWorker(kitchenWorker);
 
-        req.getRequestDispatcher(KITCHEN_WORKERS_PAGE).forward(req, resp);
+        kitchenWorkers = kitchenWorkerService.readKitchenWorker();
+        id = req.getParameter("radioGroup");
+       // System.out.println(id);
+
+        req.setAttribute("kitchenWorkers", kitchenWorkers.get(Integer.parseInt(id) - 1));
+        req.getRequestDispatcher(KITCHEN_WORKER_PAGE).forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(KITCHEN_WORKERS_PAGE).forward(req, resp);
+        doPost(req,resp);
     }
 }

@@ -3,8 +3,6 @@ package by.It.academy.services.kitchenWorker;
 import by.It.academy.entities.KitchenWorker;
 import by.It.academy.repositories.kitchenWorker.KitchenWorkerRepository;
 import by.It.academy.repositories.kitchenWorker.KitchenWorkerRepositoryImpl;
-import by.It.academy.services.courier.CourierService;
-import by.It.academy.services.courier.CourierServiceImpl;
 
 import java.util.List;
 
@@ -25,4 +23,9 @@ public class KitchenWorkerServiceImpl implements KitchenWorkerService {
         }
         return kitchenWorkerService;
     }
+
+    public KitchenWorker updateKitchenWorker(KitchenWorker kitchenWorker) {
+        return kitchenWorkerRepository.updateKitchenWorker(kitchenWorker);
+    }
+
 }

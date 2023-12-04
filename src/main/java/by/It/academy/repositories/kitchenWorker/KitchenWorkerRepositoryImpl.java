@@ -1,8 +1,6 @@
 package by.It.academy.repositories.kitchenWorker;
 
 import by.It.academy.entities.KitchenWorker;
-import by.It.academy.repositories.courier.CourierRepository;
-import by.It.academy.repositories.courier.CourierRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,4 +27,10 @@ public class KitchenWorkerRepositoryImpl implements KitchenWorkerRepository{
 
     @Override
     public List<KitchenWorker> readKitchenWorker(){return kitchenWorkers;}
+
+    @Override
+    public KitchenWorker updateKitchenWorker(KitchenWorker kitchenWorker) {
+        kitchenWorkers.set((int) (kitchenWorker.getId() - 1), kitchenWorker);
+        return kitchenWorker;
+    }
 }

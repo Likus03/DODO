@@ -26,17 +26,17 @@ public class ReadCourierController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         couriers = courierService.readCourier();
-
         req.setAttribute("couriers", couriers);
         req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=utf-8");
+
         Long id = Long.valueOf(req.getParameter("id"));
         Courier courier = courierMapper.buildUser(req);
-        //Courier courier = new Courier(Long.valueOf(req.getParameter("id")), req.getParameter("firstname"), req.getParameter("surname"), req.getParameter("phoneNumber"), req.getParameter("deliveryType"));
-        //Courier courier = courierMapper.buildUser(req);
         courierService.updateCourier(courier, id);
 
         doGet(req,resp);

@@ -21,15 +21,21 @@
   </tr>
   </thead>
   <tbody>
+  <form action="/kitchenWorkers/update" method="post">
   <c:forEach var="kitchenWorkers" items="${kitchenWorkers}">
     <tr>
       <td>${kitchenWorkers.firstname}</td>
       <td>${kitchenWorkers.surname}</td>
       <td>${kitchenWorkers.phoneNumber}</td>
       <td>${kitchenWorkers.typeEmployee}</td>
+      <td><input type="radio" id="${kitchenWorkers.id}" name="radioGroup" value="${kitchenWorkers.id}"></td>
+      <td>${kitchenWorkers.id}</td>
+
     </tr>
   </c:forEach>
   </tbody>
 </table>
+<td><input type="submit" name="editUser" value="delete"></td>
+<td><input type="submit" name="editUser" value="update"></td>
 </body>
 </html>

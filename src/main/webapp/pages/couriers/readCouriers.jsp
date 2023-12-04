@@ -36,8 +36,8 @@
 
     </tbody>
 </table>
-<td><input type="submit" name="editUser" value="delete"></td>
-<td><input type="submit" name="editUser" value="update"></td>
+<td><input type="submit" name="editCourier" value="delete"></td>
+<td><input type="submit" name="editCourier" value="update"></td>
 
 </body>
 
