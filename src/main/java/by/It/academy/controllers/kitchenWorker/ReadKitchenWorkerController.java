@@ -6,6 +6,7 @@ import by.It.academy.mapper.kitchenWorker.KitchenWorkerMapper;
 import by.It.academy.services.kitchenWorker.KitchenWorkerService;
 import by.It.academy.services.kitchenWorker.KitchenWorkerServiceImpl;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,5 +42,12 @@ public class ReadKitchenWorkerController extends HttpServlet {
 
         kitchenWorkerService.updateKitchenWorker(kitchenWorker);
         doGet(req, resp);
+    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        kitchenWorkers = kitchenWorkerService.readKitchenWorker();
+        kitchenWorkers.add(new KitchenWorker(1L, "Tom", "Cat", "80443789123", "kitchen"));
     }
 }

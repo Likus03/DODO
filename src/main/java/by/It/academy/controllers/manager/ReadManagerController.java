@@ -7,6 +7,7 @@ import by.It.academy.mapper.manager.ManagerMapper;
 import by.It.academy.services.manager.ManagerService;
 import by.It.academy.services.manager.ManagerServiceImpl;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,5 +44,12 @@ public class ReadManagerController extends HttpServlet {
         managerService.updateManager(manager);
 
         doGet(req, resp);
+    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        managers = managerService.readManager();
+        managers.add(new Manager(1L, "Tom", "Cat", "80443789123"));
     }
 }

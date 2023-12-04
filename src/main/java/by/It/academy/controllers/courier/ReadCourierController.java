@@ -5,6 +5,7 @@ import by.It.academy.mapper.courier.CourierMapper;
 import by.It.academy.services.courier.CourierService;
 import by.It.academy.services.courier.CourierServiceImpl;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,5 +43,12 @@ public class ReadCourierController extends HttpServlet {
         courierService.updateCourier(courier);
 
         doGet(req,resp);
+    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        couriers = courierService.readCourier();
+        couriers.add(new Courier(1L, "Tom", "Cat", "80443789123", "car"));
     }
 }
