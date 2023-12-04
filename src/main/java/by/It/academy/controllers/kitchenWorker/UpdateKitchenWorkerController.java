@@ -21,17 +21,17 @@ public class UpdateKitchenWorkerController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        kitchenWorkers = kitchenWorkerService.readKitchenWorker();
         id = req.getParameter("radioGroup");
-       // System.out.println(id);
+        kitchenWorkers = kitchenWorkerService.readKitchenWorker();
 
-        req.setAttribute("kitchenWorkers", kitchenWorkers.get(Integer.parseInt(id) - 1));
-        req.getRequestDispatcher(KITCHEN_WORKER_PAGE).forward(req, resp);
+        if (req.getParameter("editKitchenWorker").equals("delete")) {
+            kitchenWorkers.remove(Integer.parseInt(id) - 1);
+            req.setAttribute("kitchenWorkers", kitchenWorkers);
+            req.getRequestDispatcher("/pages/kitchenWorkers/readKitchenWorkers.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("kitchenWorkers", kitchenWorkers.get(Integer.parseInt(id) - 1));
+            req.getRequestDispatcher(KITCHEN_WORKER_PAGE).forward(req, resp);
+        }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
-    }
 }

@@ -35,7 +35,7 @@
   </c:forEach>
   </tbody>
 </table>
-<td><input type="submit" name="editUser" value="delete"></td>
-<td><input type="submit" name="editUser" value="update"></td>
+<td><input type="submit" name="editKitchenWorker" value="delete"></td>
+<td><input type="submit" name="editKitchenWorker" value="update"></td>
 </body>
 </html>

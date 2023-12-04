@@ -37,7 +37,9 @@ public class ReadCourierController extends HttpServlet {
 
         Long id = Long.valueOf(req.getParameter("id"));
         Courier courier = courierMapper.buildUser(req);
-        courierService.updateCourier(courier, id);
+        courier.setId(id);
+
+        courierService.updateCourier(courier);
 
         doGet(req,resp);
     }

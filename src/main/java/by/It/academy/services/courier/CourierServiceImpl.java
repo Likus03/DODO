@@ -31,7 +31,7 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public Courier updateCourier(Courier courier, Long id) {
-        return courierRepository.updateCourier(courier, id);
+    public Courier updateCourier(Courier courier) {
+        return courierRepository.updateCourier(courier);
     }
 }
