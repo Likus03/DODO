@@ -24,7 +24,6 @@ public class CreateCourierController extends HttpServlet {
         Courier courier = courierMapper.buildUser(req);
         courierService.createCourier(courier);
 
-
         req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
 
     }

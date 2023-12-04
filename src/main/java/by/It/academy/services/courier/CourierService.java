@@ -9,5 +9,5 @@ public interface CourierService {
 
     Courier createCourier(Courier courier);
 
-    Courier updateCourier(Courier courier);
+    Courier updateCourier(Courier courier, Long id);
 }

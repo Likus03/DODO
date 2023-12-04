@@ -32,8 +32,8 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
 
     @Override
-    public Courier updateCourier(Courier courier) {
-        couriers.set(Integer.valueOf(Math.toIntExact(courier.getId())) - 1, courier);
+    public Courier updateCourier(Courier courier, Long id) {
+        couriers.set((int) (id - 1), courier);
         return courier;
     }
 }

@@ -16,15 +16,13 @@ import java.util.List;
 @WebServlet(urlPatterns = "/couriers/update")
 public class UpdateCourierController extends HttpServlet {
     private static final String COURIERS_PAGE = "/pages/couriers/updateCouriers.jsp";
-    //    private final CourierService courierService = CourierServiceImpl.getInstance();
-//    private final CourierMapper courierMapper = new CourierMapper();
     List<Courier> couriers;
     private final CourierService courierService = CourierServiceImpl.getInstance();
     private String id;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("post");
+
         couriers = courierService.readCourier();
         id = req.getParameter("radioGroup");
 

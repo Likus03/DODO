@@ -1,6 +1,7 @@
 package by.It.academy.controllers.courier;
 
 import by.It.academy.entities.Courier;
+import by.It.academy.mapper.courier.CourierMapper;
 import by.It.academy.services.courier.CourierService;
 import by.It.academy.services.courier.CourierServiceImpl;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class ReadCourierController extends HttpServlet {
     private static final String COURIERS_PAGE = "/pages/couriers/readCouriers.jsp";
 
+    private final CourierMapper courierMapper = new CourierMapper();
+
     private final CourierService courierService = CourierServiceImpl.getInstance();
 
     List<Courier> couriers;
@@ -30,8 +33,11 @@ public class ReadCourierController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Courier courier = new Courier(Long.valueOf(req.getParameter("id")), req.getParameter("firstname"), req.getParameter("surname"), req.getParameter("phoneNumber"), req.getParameter("deliveryType"));
-        courierService.updateCourier(courier);
+        Long id = Long.valueOf(req.getParameter("id"));
+        Courier courier = courierMapper.buildUser(req);
+        //Courier courier = new Courier(Long.valueOf(req.getParameter("id")), req.getParameter("firstname"), req.getParameter("surname"), req.getParameter("phoneNumber"), req.getParameter("deliveryType"));
+        //Courier courier = courierMapper.buildUser(req);
+        courierService.updateCourier(courier, id);
 
         doGet(req,resp);
     }
