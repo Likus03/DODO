@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet(urlPatterns = "/managers/read")
 public class ReadManagerController extends HttpServlet {
     private static final String MANAGERS_PAGE = "/pages/managers/readManagers.jsp";
-    private ManagerService managerService = ManagerServiceImpl.getInstance();
+    private final ManagerService managerService = ManagerServiceImpl.getInstance();
     private final ManagerMapper managerMapper = new ManagerMapper();
 
     List<Manager> managers;
@@ -44,12 +44,5 @@ public class ReadManagerController extends HttpServlet {
         managerService.updateManager(manager);
 
         doGet(req, resp);
-    }
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        managers = managerService.readManager();
-        managers.add(new Manager(1L, "Tom", "Cat", "80443789123"));
     }
 }

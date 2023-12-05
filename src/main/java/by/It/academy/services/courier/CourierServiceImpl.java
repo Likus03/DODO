@@ -18,9 +18,10 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public Courier createCourier(Courier courier) {
-        return courierRepository.createCourier(courier);
+    public void createCourier(Courier courier) {
+        courierRepository.createCourier(courier);
     }
+
 
     public static CourierService getInstance(){
 
@@ -31,7 +32,18 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public Courier updateCourier(Courier courier) {
-        return courierRepository.updateCourier(courier);
+    public void updateCourier(Courier courier) {
+         courierRepository.updateCourier(courier);
     }
+
+    @Override
+    public void deleteCourier(long id) {
+        courierRepository.deleteCourier(id);
+    }
+
+    @Override
+    public Courier getCourier(long id) {
+        return courierRepository.getCourier(id);
+    }
+
 }

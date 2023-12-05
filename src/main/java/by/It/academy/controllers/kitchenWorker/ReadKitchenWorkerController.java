@@ -43,11 +43,4 @@ public class ReadKitchenWorkerController extends HttpServlet {
         kitchenWorkerService.updateKitchenWorker(kitchenWorker);
         doGet(req, resp);
     }
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        kitchenWorkers = kitchenWorkerService.readKitchenWorker();
-        kitchenWorkers.add(new KitchenWorker(1L, "Tom", "Cat", "80443789123", "kitchen"));
-    }
 }

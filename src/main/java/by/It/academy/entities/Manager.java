@@ -14,4 +14,6 @@ public class Manager {
     private String firstname;
     private String surname;
     private String phoneNumber;
+    private String login;
+    private String password;
 }

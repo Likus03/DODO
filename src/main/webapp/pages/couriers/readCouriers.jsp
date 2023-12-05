@@ -20,6 +20,7 @@
         <th>FAMILY</th>
         <th>phoneNumber</th>
         <th>DELIVERY</th>
+        <th>ROLE</th>
     </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
             <td>${couriers.surname}</td>
             <td>${couriers.phoneNumber}</td>
             <td>${couriers.deliveryType}</td>
+            <td>${couriers.userType}</td>
             <td><input type="radio" id="${couriers.id}" name="radioGroup" value="${couriers.id}"></td>
         </tr>
         </c:forEach>

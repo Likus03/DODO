@@ -8,7 +8,10 @@ public interface CourierRepository {
 
     List<Courier> readCourier();
 
-    Courier createCourier(Courier courier);
+    void createCourier(Courier courier);
 
-    Courier updateCourier(Courier courier);
+    void updateCourier(Courier courier);
+
+    void deleteCourier(long id);
+    Courier getCourier(long id);
 }

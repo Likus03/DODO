@@ -15,4 +15,7 @@ public class Courier {
     private String surname;
     private String phoneNumber;
     private String deliveryType;
+    private String login;
+    private String password;
+    private UserType userType;
 }

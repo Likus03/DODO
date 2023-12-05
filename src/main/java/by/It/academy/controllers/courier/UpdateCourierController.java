@@ -22,15 +22,17 @@ public class UpdateCourierController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Update Post");
         id = req.getParameter("radioGroup");
         couriers = courierService.readCourier();
 
         if (req.getParameter("editCourier").equals("delete")) {
-            couriers.remove(Integer.parseInt(id) - 1);
+
+            courierService.deleteCourier(Long.parseLong(id));
             req.setAttribute("couriers", couriers);
             req.getRequestDispatcher("/pages/couriers/readCouriers.jsp").forward(req, resp);
         } else {
-            req.setAttribute("courier", couriers.get(Integer.parseInt(id) - 1));
+            req.setAttribute("courier", courierService.getCourier(Long.parseLong(id)));
             req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
         }
     }

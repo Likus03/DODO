@@ -15,4 +15,6 @@ public class KitchenWorker {
     private String surname;
     private String phoneNumber;
     private String typeEmployee;
+    private String login;
+    private String password;
 }

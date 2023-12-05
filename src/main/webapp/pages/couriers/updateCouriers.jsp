@@ -24,6 +24,9 @@
             <td><input type="text" name="deliveryType" value="${courier.deliveryType}"></td>
             <td><input type="submit" name="buttonCreate" value="update"></td>
             <td><input type="hidden" name="id" value="${courier.id}" ></td>
+            <td><input type="hidden" name="login" value="${courier.login}"></td>
+            <td><input type="hidden" name="password" value="${courier.password}"></td>
+            <td><input type="hidden" name="role" value="${courier.userType}"></td>
         </tr>
     </form>
     </tbody>
