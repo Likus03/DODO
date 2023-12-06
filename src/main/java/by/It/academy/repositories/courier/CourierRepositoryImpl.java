@@ -53,7 +53,7 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
 
     @Override
-    public Courier getCourier(long id) {
+    public Courier getCourierById(long id) {
         return couriers.stream().filter(courierTemp -> courierTemp.getId()==id).findFirst().get();
     }
 }

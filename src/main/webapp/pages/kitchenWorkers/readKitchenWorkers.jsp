@@ -18,6 +18,7 @@
     <th>FAMILY</th>
     <th>phoneNumber</th>
     <th>typeEmployee</th>
+    <th>ROLE</th>
   </tr>
   </thead>
   <tbody>
@@ -28,6 +29,7 @@
       <td>${kitchenWorkers.surname}</td>
       <td>${kitchenWorkers.phoneNumber}</td>
       <td>${kitchenWorkers.typeEmployee}</td>
+      <td>${kitchenWorkers.userType}</td>
       <td><input type="radio" id="${kitchenWorkers.id}" name="radioGroup" value="${kitchenWorkers.id}"></td>
     </tr>
   </c:forEach>

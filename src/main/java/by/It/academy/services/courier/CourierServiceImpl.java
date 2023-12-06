@@ -43,7 +43,7 @@ public class CourierServiceImpl implements CourierService {
 
     @Override
     public Courier getCourier(long id) {
-        return courierRepository.getCourier(id);
+        return courierRepository.getCourierById(id);
     }
 
 }

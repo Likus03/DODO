@@ -1,7 +1,6 @@
 package by.It.academy.controllers.courier;
 
 import by.It.academy.entities.Courier;
-import by.It.academy.repositories.courier.CourierRepositoryImpl;
 import by.It.academy.services.courier.CourierService;
 import by.It.academy.services.courier.CourierServiceImpl;
 
@@ -15,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @WebServlet(urlPatterns = "/couriers/authorization")
 public class AuthorizationCourierController extends HttpServlet {
@@ -29,9 +28,8 @@ public class AuthorizationCourierController extends HttpServlet {
         couriers = courierService.readCourier();
         req.setAttribute("couriers", couriers);
 
-
         Optional<Courier> user = getLogInId(req.getParameter("login"), req.getParameter("password"));
-        //-------------------------//
+
         if (user.isEmpty()) {
             req.getRequestDispatcher("/pages/errors/errorLogIn.jsp").forward(req, resp);
         } else {

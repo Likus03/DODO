@@ -8,6 +8,9 @@
         <th>family</th>
         <th>phoneNumber</th>
         <th>typeEmployee</th>
+        <th>login</th>
+        <th>password</th>
+        <th>role</th>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +20,9 @@
             <td><input type="text" name="surname" placeholder="put your surname"></td>
             <td><input type="text" name="phoneNumber" placeholder="put your phone number"></td>
             <td><input type="text" name="typeEmployee" placeholder="put your employee type"></td>
+            <td><input type="text" name="login" placeholder="put your login"></td>
+            <td><input type="text" name="password" placeholder="put your password"></td>
+            <td><input type="text" name="role" placeholder="put your role"></td>
             <td><input type="submit" name="buttonCreate" value="create"></td>
         </tr>
     </form>

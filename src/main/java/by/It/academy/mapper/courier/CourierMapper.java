@@ -1,6 +1,5 @@
 package by.It.academy.mapper.courier;
 
-import by.It.academy.controllers.courier.CreateCourierController;
 import by.It.academy.entities.Courier;
 import by.It.academy.entities.UserType;
 import by.It.academy.utils.Constants;
@@ -16,7 +15,7 @@ public class CourierMapper {
                 .deliveryType(request.getParameter("deliveryType"))
                 .login(request.getParameter("login"))
                 .password(request.getParameter("password"))
-                .userType(UserType.USER.equals(UserType.valueOf(request.getParameter("role")))?UserType.USER:UserType.ADMIN)
+                .userType(UserType.USER.equals(UserType.valueOf(request.getParameter("role").toUpperCase()))?UserType.USER:UserType.ADMIN)
                 .build();
     }
 }

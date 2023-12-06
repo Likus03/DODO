@@ -8,7 +8,10 @@ import java.util.List;
 public interface KitchenWorkerRepository {
     List<KitchenWorker> readKitchenWorker();
 
-    KitchenWorker createKitchenWorker(KitchenWorker kitchenWorker);
+    void createKitchenWorker(KitchenWorker kitchenWorker);
 
-    KitchenWorker updateKitchenWorker(KitchenWorker kitchenWorker);
+    void updateKitchenWorker(KitchenWorker kitchenWorker);
+
+    void deleteKitchenWorker(long id);
+    KitchenWorker getKitchenWorkerById(long id);
 }

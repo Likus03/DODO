@@ -41,6 +41,7 @@ public class ReadKitchenWorkerController extends HttpServlet {
         kitchenWorker.setId(id);
 
         kitchenWorkerService.updateKitchenWorker(kitchenWorker);
+        kitchenWorkerService.readKitchenWorker();
         doGet(req, resp);
     }
 }

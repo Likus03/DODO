@@ -13,5 +13,5 @@ public interface CourierRepository {
     void updateCourier(Courier courier);
 
     void deleteCourier(long id);
-    Courier getCourier(long id);
+    Courier getCourierById(long id);
 }

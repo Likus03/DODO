@@ -16,4 +16,5 @@ public class Manager {
     private String phoneNumber;
     private String login;
     private String password;
+    private UserType userType;
 }

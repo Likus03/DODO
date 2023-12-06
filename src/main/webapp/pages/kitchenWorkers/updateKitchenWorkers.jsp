@@ -24,6 +24,9 @@
       <td><input type="text" name="typeEmployee" value="${kitchenWorkers.typeEmployee}"></td>
       <td><input type="submit" name="buttonCreate" value="update"></td>
       <td><input type="hidden" name="id" value="${kitchenWorkers.id}" ></td>
+      <td><input type="hidden" name="login" value="${kitchenWorkers.login}"></td>
+      <td><input type="hidden" name="password" value="${kitchenWorkers.password}"></td>
+      <td><input type="hidden" name="role" value="${kitchenWorkers.userType}"></td>
     </tr>
   </form>
   </tbody>

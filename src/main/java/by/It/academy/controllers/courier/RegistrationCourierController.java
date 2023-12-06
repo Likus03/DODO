@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/couriers/create")
-public class CreateCourierController extends HttpServlet {
+public class RegistrationCourierController extends HttpServlet {
     private static final String COURIERS_PAGE = "/pages/couriers/createCouriers.jsp";
     private final CourierService courierService = CourierServiceImpl.getInstance();
     private final CourierMapper courierMapper = new CourierMapper();

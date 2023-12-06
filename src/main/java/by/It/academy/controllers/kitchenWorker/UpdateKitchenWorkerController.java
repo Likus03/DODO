@@ -25,11 +25,12 @@ public class UpdateKitchenWorkerController extends HttpServlet {
         kitchenWorkers = kitchenWorkerService.readKitchenWorker();
 
         if (req.getParameter("editKitchenWorker").equals("delete")) {
-            kitchenWorkers.remove(Integer.parseInt(id) - 1);
+
+            kitchenWorkerService.deleteKitchenWorker(Long.parseLong(id));
             req.setAttribute("kitchenWorkers", kitchenWorkers);
             req.getRequestDispatcher("/pages/kitchenWorkers/readKitchenWorkers.jsp").forward(req, resp);
         } else {
-            req.setAttribute("kitchenWorkers", kitchenWorkers.get(Integer.parseInt(id) - 1));
+            req.setAttribute("kitchenWorkers", kitchenWorkerService.getKitchenWorker(Long.parseLong(id)));
             req.getRequestDispatcher(KITCHEN_WORKER_PAGE).forward(req, resp);
         }
     }

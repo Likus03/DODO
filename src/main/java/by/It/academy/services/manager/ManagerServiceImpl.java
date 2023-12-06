@@ -13,7 +13,7 @@ public class ManagerServiceImpl implements ManagerService{
 
     private ManagerServiceImpl(){}
     @Override
-    public Manager createManager(Manager manager){return managerRepository.createManager(manager);}
+    public void createManager(Manager manager){managerRepository.createManager(manager);}
 
     public static ManagerService getInstance() {
         if(managerService == null){
@@ -28,7 +28,17 @@ public class ManagerServiceImpl implements ManagerService{
     }
 
     @Override
-    public Manager updateManager(Manager manager) {
-        return managerRepository.updateManager(manager);
+    public void updateManager(Manager manager) {
+        managerRepository.updateManager(manager);
+    }
+
+    @Override
+    public void deleteManager(long id) {
+        managerRepository.deleteManager(id);
+    }
+
+    @Override
+    public Manager getManager(long id) {
+        return managerRepository.getManagerById(id);
     }
 }

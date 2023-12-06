@@ -22,7 +22,6 @@ public class UpdateCourierController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Update Post");
         id = req.getParameter("radioGroup");
         couriers = courierService.readCourier();
 

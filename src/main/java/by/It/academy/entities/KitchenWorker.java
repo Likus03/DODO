@@ -17,4 +17,5 @@ public class KitchenWorker {
     private String typeEmployee;
     private String login;
     private String password;
+    private UserType userType;
 }

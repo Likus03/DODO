@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @WebFilter(urlPatterns = "/couriers/create")
 public class CreateFilter extends HttpFilter {
-    private final CourierService courierService = CourierServiceImpl.getInstance();
+    private final CourierService courierService = CourierServiceImpl.getInstance();  //TODO: можно ли объединить
     List<Courier> couriers;
 
     @Override

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/kitchenWorkers/create")
-public class CreateKitchenWorkerController extends HttpServlet {
+public class RegistrationKitchenWorkerController extends HttpServlet {
     private static final String KITCHEN_WORKERS_PAGE = "/pages/kitchenWorkers/createKitchenWorkers.jsp";
     private final KitchenWorkerService kitchenWorkerService = KitchenWorkerServiceImpl.getInstance();
     private final KitchenWorkerMapper kitchenWorkerMapper = new KitchenWorkerMapper();
