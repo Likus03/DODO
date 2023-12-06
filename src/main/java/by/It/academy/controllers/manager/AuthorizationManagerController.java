@@ -1,8 +1,11 @@
-package by.It.academy.controllers.courier;
+package by.It.academy.controllers.manager;
 
 import by.It.academy.entities.Courier;
+import by.It.academy.entities.Manager;
 import by.It.academy.services.courier.CourierService;
 import by.It.academy.services.courier.CourierServiceImpl;
+import by.It.academy.services.manager.ManagerService;
+import by.It.academy.services.manager.ManagerServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,33 +18,30 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-
-@WebServlet(urlPatterns = "/couriers/authorization")
-public class AuthorizationCourierController extends HttpServlet {
-
-    CourierService courierService = CourierServiceImpl.getInstance();
-    List<Courier> couriers;
+@WebServlet(urlPatterns = "/managers/authorization")
+public class AuthorizationManagerController extends HttpServlet {
+    ManagerService managerService = ManagerServiceImpl.getInstance();
+    List<Manager> managers;
     HttpSession session = null;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        couriers = courierService.readCourier();
-        req.setAttribute("couriers", couriers);
+        managers = managerService.readManager();
+        req.setAttribute("managers", managers);
 
-        Optional<Courier> user = getLogInId(req.getParameter("login"), req.getParameter("password"));
+        Optional<Manager> user = getLogInId(req.getParameter("login"), req.getParameter("password"));
 
         if (user.isEmpty()) {
             req.getRequestDispatcher("/pages/errors/errorLogIn.jsp").forward(req, resp);
         } else {
             session = req.getSession(true);
             session.setAttribute("userType", user.get().getUserType());
-            req.getRequestDispatcher("/pages/couriers/readCouriers.jsp").forward(req,resp);
-           // req.getRequestDispatcher("/pages/couriers/orders.jsp").forward(req,resp);
+            req.getRequestDispatcher("/pages/managers/readManagers.jsp").forward(req,resp);
         }
     }
 
-    private Optional<Courier> getLogInId(String login, String password) {
-        return couriers.stream()
+    private Optional<Manager> getLogInId(String login, String password) {
+        return managers.stream()
                 .filter(courier -> (Objects.equals(courier.getLogin(), login) && Objects.equals(courier.getPassword(), password)))
                 .findFirst();
     }

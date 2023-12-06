@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/couriers/update", "/kitchenWorkers/update"})
+@WebFilter(urlPatterns = {"/couriers/update", "/kitchenWorkers/update", "/managers/update"})
 public class AccessFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {

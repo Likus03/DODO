@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/managers/create")
-public class CreateManagerController extends HttpServlet {
+public class RegistrationManagerController extends HttpServlet {
     private static final String MANAGERS_PAGE = "/pages/managers/createManagers.jsp";
     private final ManagerService managerService = ManagerServiceImpl.getInstance();
     private final ManagerMapper managerMapper = new ManagerMapper();

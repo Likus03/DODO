@@ -22,6 +22,9 @@
             <td><input type="text" name="phoneNumber" value="${managers.phoneNumber}"></td>
             <td><input type="submit" name="buttonCreate" value="update"></td>
             <td><input type="hidden" name="id" value="${managers.id}" ></td>
+            <td><input type="hidden" name="login" value="${managers.login}"></td>
+            <td><input type="hidden" name="password" value="${managers.password}"></td>
+            <td><input type="hidden" name="role" value="${managers.userType}"></td>
         </tr>
     </form>
     </tbody>

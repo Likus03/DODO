@@ -42,7 +42,7 @@ public class ReadManagerController extends HttpServlet {
         manager.setId(id);
 
         managerService.updateManager(manager);
-
+        managerService.readManager();
         doGet(req, resp);
     }
 }

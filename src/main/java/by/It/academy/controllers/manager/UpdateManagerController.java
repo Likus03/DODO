@@ -25,11 +25,11 @@ public class UpdateManagerController extends HttpServlet {
         managers = managerService.readManager();
 
         if (req.getParameter("editManager").equals("delete")) {
-            managers.remove(Integer.parseInt(id) - 1);
+            managerService.deleteManager(Long.parseLong(id));
             req.setAttribute("managers", managers);
             req.getRequestDispatcher("/pages/managers/readManagers.jsp").forward(req, resp);
         } else {
-            req.setAttribute("managers", managers.get(Integer.parseInt(id) - 1));
+            req.setAttribute("managers", managerService.getManager(Long.parseLong(id)));
             req.getRequestDispatcher(MANAGERS_PAGE).forward(req, resp);
         }
     }

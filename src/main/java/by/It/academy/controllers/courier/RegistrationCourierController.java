@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/couriers/create")
@@ -18,11 +19,17 @@ public class RegistrationCourierController extends HttpServlet {
     private final CourierService courierService = CourierServiceImpl.getInstance();
     private final CourierMapper courierMapper = new CourierMapper();
 
+    HttpSession session = null;
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         Courier courier = courierMapper.buildUser(req);
         courierService.createCourier(courier);
+
+        session = req.getSession(true);
+        session.setAttribute("userType", courier.getUserType());
 
         req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
 
