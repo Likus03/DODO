@@ -1,8 +1,10 @@
 package by.It.academy.filters;
 
-import by.It.academy.entities.Courier;
-import by.It.academy.services.courier.CourierService;
-import by.It.academy.services.courier.CourierServiceImpl;
+import by.It.academy.entities.Worker;
+import by.It.academy.repositories.Repository;
+import by.It.academy.repositories.RepositoryImpl;
+import by.It.academy.services.Service;
+import by.It.academy.services.ServiceImpl;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -14,10 +16,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@WebFilter(urlPatterns = "/couriers/create")
+@WebFilter(urlPatterns = "/create")
 public class CreateFilter extends HttpFilter {
-    private final CourierService courierService = CourierServiceImpl.getInstance();  //TODO: можно ли объединить
-    List<Courier> couriers;
+    private final Service service = ServiceImpl.getInstance();
+    List<Worker> workers;
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -27,9 +29,9 @@ public class CreateFilter extends HttpFilter {
         else chain.doFilter(req,res);
     }
 
-    private Optional<Courier> checkLogin(String login) {
-        couriers = courierService.readCourier();
-        return couriers.stream()
+    private Optional<Worker> checkLogin(String login) {
+        workers = service.read();
+        return workers.stream()
                 .filter(courier -> courier.getLogin().equals(login))
                 .findFirst();
     }
