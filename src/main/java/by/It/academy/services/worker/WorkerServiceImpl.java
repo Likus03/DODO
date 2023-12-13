@@ -1,8 +1,8 @@
-package by.It.academy.services;
+package by.It.academy.services.worker;
 
 import by.It.academy.entities.Worker;
-import by.It.academy.repositories.WorkerRepository;
-import by.It.academy.repositories.WorkerRepositoryImpl;
+import by.It.academy.repositories.worker.WorkerRepository;
+import by.It.academy.repositories.worker.WorkerRepositoryImpl;
 
 import java.util.List;
 

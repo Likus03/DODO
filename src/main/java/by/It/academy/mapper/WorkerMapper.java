@@ -7,6 +7,17 @@ import by.It.academy.utils.Constants;
 import javax.servlet.http.HttpServletRequest;
 
 public class WorkerMapper {
+    private static WorkerMapper workerMapper;
+    public static WorkerMapper getInstance(){
+        if(workerMapper == null){
+            workerMapper = new WorkerMapper();
+        }
+        return workerMapper;
+    }
+
+    private WorkerMapper() {
+    }
+
     public Worker buildWorker(HttpServletRequest request){
         return Worker.builder()
                 .firstname(request.getParameter(Constants.FIRSTNAME))

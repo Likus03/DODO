@@ -1,4 +1,4 @@
-package by.It.academy.services;
+package by.It.academy.services.worker;
 
 import by.It.academy.entities.Worker;
 

@@ -1,9 +1,9 @@
-package by.It.academy.repositories;
+package by.It.academy.repositories.worker;
 import by.It.academy.entities.Worker;
 
 import java.util.List;
 
-public interface WorkerRepository {
+public interface WorkerRepository{
 
     List<Worker> read();
 

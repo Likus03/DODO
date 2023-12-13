@@ -26,7 +26,7 @@
       <td><select name="role" size="1">
         <option selected value="Manager">Manager</option>
         <option value="Courier">Courier</option>
-        <option value="Kitchen_Worker">Kitchen Worker</option>
+        <option value="KitchenWorker">Kitchen Worker</option>
       </select></td>
       <td><input type="submit" name="buttonCreate" value="sing up"></td>
     </tr>

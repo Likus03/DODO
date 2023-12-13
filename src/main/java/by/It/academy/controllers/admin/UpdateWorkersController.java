@@ -2,8 +2,8 @@ package by.It.academy.controllers.admin;
 
 import by.It.academy.entities.Worker;
 import by.It.academy.mapper.WorkerMapper;
-import by.It.academy.services.WorkerService;
-import by.It.academy.services.WorkerServiceImpl;
+import by.It.academy.services.worker.WorkerService;
+import by.It.academy.services.worker.WorkerServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +14,14 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/update")
-public class UpdateController extends HttpServlet {
+public class UpdateWorkersController extends HttpServlet {
     private final WorkerService workerService = WorkerServiceImpl.getInstance();
-    private final WorkerMapper workerMapper = new WorkerMapper();
+    private final WorkerMapper workerMapper = WorkerMapper.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Worker> workers = workerService.read();
         req.setAttribute("workers", workers);
-        req.getRequestDispatcher("/pages/updateWorkers.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/admin/updateWorkers.jsp").forward(req, resp);
     }
 
     @Override

@@ -2,8 +2,8 @@ package by.It.academy.controllers.admin;
 
 import by.It.academy.entities.Worker;
 import by.It.academy.mapper.WorkerMapper;
-import by.It.academy.services.WorkerService;
-import by.It.academy.services.WorkerServiceImpl;
+import by.It.academy.services.worker.WorkerService;
+import by.It.academy.services.worker.WorkerServiceImpl;
 import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
@@ -16,8 +16,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/read")
 public class ReadWorkersController extends HttpServlet {
-    private static final String COURIERS_PAGE = "/pages/readWorkers.jsp"; //TODO: не courier
-    private final WorkerMapper workerMapper = new WorkerMapper();
+    private static final String COURIERS_PAGE = "/pages/admin/readWorkers.jsp"; //TODO: не courier
+    private final WorkerMapper workerMapper = WorkerMapper.getInstance();
     private final WorkerService workerService = WorkerServiceImpl.getInstance();
 
 

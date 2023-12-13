@@ -1,8 +1,8 @@
 package by.It.academy.filters;
 
 import by.It.academy.entities.Worker;
-import by.It.academy.services.WorkerService;
-import by.It.academy.services.WorkerServiceImpl;
+import by.It.academy.services.worker.WorkerService;
+import by.It.academy.services.worker.WorkerServiceImpl;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

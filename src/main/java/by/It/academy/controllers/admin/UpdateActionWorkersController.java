@@ -1,7 +1,7 @@
 package by.It.academy.controllers.admin;
 
-import by.It.academy.repositories.WorkerRepository;
-import by.It.academy.repositories.WorkerRepositoryImpl;
+import by.It.academy.repositories.worker.WorkerRepository;
+import by.It.academy.repositories.worker.WorkerRepositoryImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/updateAction")
 public class UpdateActionWorkersController extends HttpServlet {
-    private static final String COURIERS_PAGE = "/pages/updateActionWorker.jsp";
+    private static final String COURIERS_PAGE = "/pages/admin/updateActionWorker.jsp";
     private final WorkerRepository repository = WorkerRepositoryImpl.getInstance();
 
     @Override

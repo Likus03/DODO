@@ -1,4 +1,4 @@
-package by.It.academy.repositories;
+package by.It.academy.repositories.worker;
 
 import by.It.academy.entities.UserType;
 import by.It.academy.entities.Worker;
@@ -10,14 +10,15 @@ import java.util.Objects;
 public class WorkerRepositoryImpl implements WorkerRepository {
     private static WorkerRepository workerRepository;
     private static final List<Worker> workers = new ArrayList<>();
-    private static long id=6;
+    private static long id=7;
 
     private WorkerRepositoryImpl() {
         workers.add(new Worker(1L, "Tom", "Cat", "80443789123", "admin", "admin", UserType.ADMIN));
-        workers.add(new Worker(2L, "Alex", "Bon", "80442599163", "11", "11", UserType.MANAGER));
-        workers.add(new Worker(3L, "Rick", "Gan", "80443971123", "gr", "22", UserType.KITCHEN_WORKER));
-        workers.add(new Worker(4L, "Jake", "Zek", "80443171123", "yy", "33", UserType.COURIER));
-        workers.add(new Worker(5L, "Li", "Ran", "80441271123", "io", "44", UserType.KITCHEN_WORKER));
+        workers.add(new Worker(2L, "Tom", "Cat", "80443789123", "1", "1", UserType.ADMIN));
+        workers.add(new Worker(3L, "Alex", "Bon", "80442599163", "11", "11", UserType.MANAGER));
+        workers.add(new Worker(4L, "Rick", "Gan", "80443971123", "gr", "22", UserType.KITCHEN_WORKER));
+        workers.add(new Worker(5L, "Jake", "Zek", "80443171123", "33", "33", UserType.COURIER));
+        workers.add(new Worker(6L, "Li", "Ran", "80441271123", "io", "44", UserType.KITCHEN_WORKER));
     }
 
     @Override
