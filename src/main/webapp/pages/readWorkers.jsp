@@ -25,18 +25,18 @@
     </thead>
     <tbody>
     <form action="/update" method="post">
-        <c:forEach var="couriers" items="${workers}">
+        <c:forEach var="workers" items="${workers}">
         <tr>
-            <td>${couriers.firstname}</td>
-            <td>${couriers.surname}</td>
-            <td>${couriers.phoneNumber}</td>
-            <td>${couriers.userType}</td>
-            <td><input type="radio" id="${couriers.id}" name="radioGroup" value="${couriers.id}"></td>
+            <td>${workers.firstname}</td>
+            <td>${workers.surname}</td>
+            <td>${workers.phoneNumber}</td>
+            <td>${workers.userType}</td>
+            <td><input type="radio" id="${workers.id}" name="radioGroup" value="${workers.id}"></td>
         </tr>
         </c:forEach>
     </tbody>
 </table>
-<td><input type="submit" name="editCourier" value="delete"></td>
-<td><input type="submit" name="editCourier" value="update"></td>
+<%--<td><input type="submit" name="editCourier" value="delete"></td>--%>
+<%--<td><input type="submit" name="editCourier" value="update"></td>--%>
 </body>
 </html>

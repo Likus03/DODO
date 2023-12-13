@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RepositoryImpl implements Repository {
-    private static Repository repository;
+public class WorkerRepositoryImpl implements WorkerRepository {
+    private static WorkerRepository workerRepository;
     private static final List<Worker> workers = new ArrayList<>();
     private static long id=6;
 
-    private RepositoryImpl() {
+    private WorkerRepositoryImpl() {
         workers.add(new Worker(1L, "Tom", "Cat", "80443789123", "admin", "admin", UserType.ADMIN));
         workers.add(new Worker(2L, "Alex", "Bon", "80442599163", "11", "11", UserType.MANAGER));
         workers.add(new Worker(3L, "Rick", "Gan", "80443971123", "gr", "22", UserType.KITCHEN_WORKER));
@@ -26,11 +26,11 @@ public class RepositoryImpl implements Repository {
         workers.add(worker);
     }
 
-    public static Repository getInstance() {
-        if (repository == null) {
-            repository = new RepositoryImpl();
+    public static WorkerRepository getInstance() {
+        if (workerRepository == null) {
+            workerRepository = new WorkerRepositoryImpl();
         }
-        return repository;
+        return workerRepository;
     }
 
     @Override

@@ -1,16 +1,13 @@
-package by.It.academy.repositories;
+package by.It.academy.services;
+
 import by.It.academy.entities.Worker;
 
 import java.util.List;
 
-public interface Repository {
-
+public interface WorkerService {
     List<Worker> read();
-
     void create(Worker worker);
-
     void update(Worker worker);
-
     void delete(long id);
     Worker getById(long id);
 }

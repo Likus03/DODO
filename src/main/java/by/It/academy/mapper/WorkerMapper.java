@@ -7,13 +7,13 @@ import by.It.academy.utils.Constants;
 import javax.servlet.http.HttpServletRequest;
 
 public class WorkerMapper {
-    public Worker buildUser(HttpServletRequest request){
+    public Worker buildWorker(HttpServletRequest request){
         return Worker.builder()
-                .firstname(request.getParameter(Constants.FIRSTNAME_PARAM))
-                .surname(request.getParameter("surname"))
-                .phoneNumber(request.getParameter("phoneNumber"))
-                .login(request.getParameter("login"))
-                .password(request.getParameter("password"))
+                .firstname(request.getParameter(Constants.FIRSTNAME))
+                .surname(request.getParameter(Constants.SURNAME))
+                .phoneNumber(request.getParameter(Constants.PHONE_NUMBER))
+                .login(request.getParameter(Constants.LOGIN))
+                .password(request.getParameter(Constants.PASSWORD))
                 .userType(UserType.valueOf(request.getParameter("role").toUpperCase()))
                 .build();
     }

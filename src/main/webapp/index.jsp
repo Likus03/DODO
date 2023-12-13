@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hepl</h2>
+<h2>Help</h2>
 </body>
 </html>

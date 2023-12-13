@@ -1,16 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <title>Managers</title>
+    <title>to Update</title>
+
     <style type="text/css">
         th {
             color: lightblue;
             font-family: Arial
         }
     </style>
+
 </head>
 <body>
+<h3 style="text-align: center">Choose to update</h3>
 <table width="50%" border="1" rules="all">
     <thead>
     <tr>
@@ -21,20 +25,18 @@
     </tr>
     </thead>
     <tbody>
-    <form action="/managers/update" method="post">
-    <c:forEach var="managers" items="${managers}">
+    <form action="/updateAction" method="post">
+        <c:forEach var="workers" items="${workers}">
         <tr>
-            <td>${managers.firstname}</td>
-            <td>${managers.surname}</td>
-            <td>${managers.phoneNumber}</td>
-            <td>${managers.userType}</td>
-            <td><input type="radio" id="${managers.id}" name="radioGroup" value="${managers.id}"></td>
+            <td>${workers.firstname}</td>
+            <td>${workers.surname}</td>
+            <td>${workers.phoneNumber}</td>
+            <td>${workers.userType}</td>
+            <td><input type="radio" id="${workers.id}" name="radioGroup" value="${workers.id}"></td>
         </tr>
-    </c:forEach>
+        </c:forEach>
     </tbody>
 </table>
-<td><input type="submit" name="editManager" value="delete"></td>
-<td><input type="submit" name="editManager" value="update"></td>
-
+<input type="submit" name="updateWorker" value="update">
 </body>
 </html>

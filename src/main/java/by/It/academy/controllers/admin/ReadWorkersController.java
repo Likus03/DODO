@@ -1,11 +1,10 @@
-package by.It.academy.controllers;
+package by.It.academy.controllers.admin;
 
 import by.It.academy.entities.Worker;
 import by.It.academy.mapper.WorkerMapper;
-import by.It.academy.repositories.Repository;
-import by.It.academy.repositories.RepositoryImpl;
-import by.It.academy.services.Service;
-import by.It.academy.services.ServiceImpl;
+import by.It.academy.services.WorkerService;
+import by.It.academy.services.WorkerServiceImpl;
+import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,31 +15,34 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/read")
-public class ReadController extends HttpServlet {
-    private static final String COURIERS_PAGE = "/pages/readWorkers.jsp";
-    private final WorkerMapper courierMapper = new WorkerMapper();
-    private final Service service = ServiceImpl.getInstance();
-    List<Worker> workers;
+public class ReadWorkersController extends HttpServlet {
+    private static final String COURIERS_PAGE = "/pages/readWorkers.jsp"; //TODO: не courier
+    private final WorkerMapper workerMapper = new WorkerMapper();
+    private final WorkerService workerService = WorkerServiceImpl.getInstance();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        workers = service.read();
+        List<Worker> workers = workerService.read();
         req.setAttribute("workers", workers);
         req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html;charset=utf-8");
+        Constants.russianLang(req, resp);
+
+        doGet(req, resp);
 
         Long id = Long.valueOf(req.getParameter("id"));
 
-        Worker worker = courierMapper.buildUser(req);
+        Worker worker = workerMapper.buildWorker(req);
         worker.setId(id);
 
-        service.update(worker);
-        service.read();
+        workerService.update(worker);
+        workerService.read();
         doGet(req, resp);
     }
+
+
 }

@@ -1,10 +1,8 @@
 package by.It.academy.filters;
 
 import by.It.academy.entities.Worker;
-import by.It.academy.repositories.Repository;
-import by.It.academy.repositories.RepositoryImpl;
-import by.It.academy.services.Service;
-import by.It.academy.services.ServiceImpl;
+import by.It.academy.services.WorkerService;
+import by.It.academy.services.WorkerServiceImpl;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -18,7 +16,7 @@ import java.util.Optional;
 
 @WebFilter(urlPatterns = "/create")
 public class CreateFilter extends HttpFilter {
-    private final Service service = ServiceImpl.getInstance();
+    private final WorkerService workerService = WorkerServiceImpl.getInstance();
     List<Worker> workers;
 
     @Override
@@ -30,7 +28,7 @@ public class CreateFilter extends HttpFilter {
     }
 
     private Optional<Worker> checkLogin(String login) {
-        workers = service.read();
+        workers = workerService.read();
         return workers.stream()
                 .filter(courier -> courier.getLogin().equals(login))
                 .findFirst();

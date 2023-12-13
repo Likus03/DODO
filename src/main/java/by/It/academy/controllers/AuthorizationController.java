@@ -1,10 +1,8 @@
 package by.It.academy.controllers;
 
 import by.It.academy.entities.Worker;
-import by.It.academy.repositories.Repository;
-import by.It.academy.repositories.RepositoryImpl;
-import by.It.academy.services.Service;
-import by.It.academy.services.ServiceImpl;
+import by.It.academy.services.WorkerService;
+import by.It.academy.services.WorkerServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,35 +15,48 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-
 @WebServlet(urlPatterns = "/authorization")
 public class AuthorizationController extends HttpServlet {
-
-   private final Service service = ServiceImpl.getInstance();
-    List<Worker> workers;
-    HttpSession session = null;
+    private final WorkerService workerService = WorkerServiceImpl.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        workers = service.read();
-        req.setAttribute("workers", workers);
+        List<Worker> workers = workerService.read();
 
-        Optional<Worker> user = getLogInId(req.getParameter("username"), req.getParameter("password"));
+        Optional<Worker> user = getLoggedWorker(req.getParameter("username"), req.getParameter("password"), workers);
 
-        if (user.isEmpty()) {
-            req.getRequestDispatcher("/pages/errors/errorLogIn.jsp").forward(req, resp);
-        } else {
-            session = req.getSession(true);
-            session.setAttribute("userType", user.get().getUserType());
-
-            req.getRequestDispatcher("/pages/readWorkers.jsp").forward(req,resp);
+        switch (user.get().getUserType()) {  //TODO:нужен чек
+            case ADMIN: {
+                req.getRequestDispatcher("/pages/admin.jsp").forward(req, resp);
+            }
+            case COURIER: {
+                //перерйти к заказам
+                //перейти к сменам
+                //перейти к завершенным заказам
+            }
+            case MANAGER:{
+                //перейти к сменам
+            }
+            case KITCHEN_WORKER:{
+                //перейти к сменам
+            }
+            default:{
+                req.getRequestDispatcher("/pages/errors/errorLogIn.jsp").forward(req, resp);
+            }
         }
+//        if (user.isEmpty()) {
+//            req.getRequestDispatcher("/pages/errors/errorLogIn.jsp").forward(req, resp);
+//        } else {
+//            HttpSession session = req.getSession(true);
+//            session.setAttribute("userType", user.get().getUserType());
+//
+//            req.getRequestDispatcher("/read").forward(req, resp);
+//        }
     }
 
-    private Optional<Worker> getLogInId(String login, String password) {
+    private Optional<Worker> getLoggedWorker(String login, String password, List<Worker> workers) {
         return workers.stream()
                 .filter(worker -> (Objects.equals(worker.getLogin(), login) && Objects.equals(worker.getPassword(), password)))
                 .findFirst();
     }
-
 }
