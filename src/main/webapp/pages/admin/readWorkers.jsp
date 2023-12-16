@@ -19,7 +19,6 @@
         <th>NAME</th>
         <th>FAMILY</th>
         <th>phoneNumber</th>
-        <th>DELIVERY</th>
         <th>ROLE</th>
     </tr>
     </thead>
@@ -35,5 +34,8 @@
     </tbody>
 </table>
 <button><a href="/pages/admin/admin.jsp">Back</a></button>
+<form action="/logOut" method="get">
+    <input style="font-size: 20px" type="submit" value="LogOut">
+</form>
 </body>
 </html>

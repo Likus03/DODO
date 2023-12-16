@@ -32,12 +32,15 @@
             <td>${workers.surname}</td>
             <td>${workers.phoneNumber}</td>
             <td>${workers.userType}</td>
-            <td><input type="radio" id="${workers.id}" name="radioGroup" value="${workers.id}"></td>
+            <td><input type="radio" name="radioGroup" value="${workers.id}"></td>
         </tr>
         </c:forEach>
     </tbody>
 </table>
 <input type="submit" name="updateWorker" value="update">
 <button><a href="/pages/admin/admin.jsp">Back</a></button>
+<form action="/logOut" method="get">
+    <input style="font-size: 20px" type="submit" value="LogOut">
+</form>
 </body>
 </html>

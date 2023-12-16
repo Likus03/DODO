@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
@@ -24,12 +25,16 @@ public class AuthorizationController extends HttpServlet {
 
         Optional<Worker> user = getLoggedWorker(req.getParameter("username"), req.getParameter("password"), workers);
 
-        switch (user.get().getUserType()) {  //TODO:нужен чек
+        switch (user.get().getWorkerType()) {  //TODO:нужен чек
             case ADMIN: {
                 req.getRequestDispatcher("/pages/admin/admin.jsp").forward(req, resp);
             }
             case COURIER: {
-                req.getRequestDispatcher("/pages/couriers/couriersPage.jsp").forward(req, resp);
+                HttpSession session = req.getSession(true);
+                session.setAttribute("idWorker", user.get().getId());
+                session.setAttribute("typeWorker", user.get().getWorkerType());
+
+                req.getRequestDispatcher("/pages/orders/couriersPage.jsp").forward(req, resp);
                 //перейти к сменам
                 //перейти к завершенным заказам
             }

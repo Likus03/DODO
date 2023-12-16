@@ -1,6 +1,6 @@
 package by.It.academy.mapper;
 
-import by.It.academy.entities.UserType;
+import by.It.academy.entities.WorkerType;
 import by.It.academy.entities.Worker;
 import by.It.academy.utils.Constants;
 
@@ -25,7 +25,7 @@ public class WorkerMapper {
                 .phoneNumber(request.getParameter(Constants.PHONE_NUMBER))
                 .login(request.getParameter(Constants.LOGIN))
                 .password(request.getParameter(Constants.PASSWORD))
-                .userType(UserType.valueOf(request.getParameter("role").toUpperCase()))
+                .workerType(WorkerType.valueOf(request.getParameter("role").toUpperCase()))
                 .build();
     }
 }

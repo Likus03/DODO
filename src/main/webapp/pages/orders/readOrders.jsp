@@ -24,6 +24,7 @@
     </tr>
     </thead>
     <tbody>
+    <form method="post" action="/readOrders">
         <c:forEach var="orders" items="${orders}">
         <tr>
             <td>${orders.idOrder}</td>
@@ -31,12 +32,14 @@
             <td>${orders.cost}</td>
             <td>${orders.address}</td>
             <td>${orders.deliveryTime}</td>
-            <td>кнопочка на взятие заказа</td>
-<%--            TODO:ДОДЕЛАТЬ--%>
         </tr>
         </c:forEach>
+    </form>
     </tbody>
 </table>
-<button><a href="/pages/admin/admin.jsp">Back</a></button>
+<button><a href="/pages/orders/couriersPage.jsp">Back</a></button>
+<form action="/logOut" method="get">
+    <input style="font-size: 20px" type="submit" value="LogOut">
+</form>
 </body>
 </html>

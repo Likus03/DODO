@@ -12,5 +12,8 @@
 </head>
 <body>
 <h3>No access</h3>
+<form action="/logOut" method="get">
+    <input style="font-size: 20px" type="submit" value="LogOut">
+</form>
 </body>
 </html>

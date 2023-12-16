@@ -18,8 +18,13 @@ public class ReadOrdersController extends HttpServlet {
     OrderService orderService = OrderServiceImpl.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Order> orders = orderService.read();
+        List<Order> orders = orderService.readNotCompleted();
         req.setAttribute("orders", orders);
-        req.getRequestDispatcher("/pages/couriers/readOrders.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/orders/readOrders.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
     }
 }

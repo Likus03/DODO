@@ -1,12 +1,12 @@
 package by.It.academy.repositories.order;
 
 import by.It.academy.entities.Order;
-import by.It.academy.entities.Worker;
 
 import java.util.List;
 
 public interface OrderRepository {
-    List<Order> read();
+    List<Order> readNotCompleted();
+    List<Order> readAll();
 
     void create(Order order);
 
@@ -14,4 +14,6 @@ public interface OrderRepository {
 
     void delete(long id);
     Order getById(long id);
+
+    void completeOrder(Order order);
 }

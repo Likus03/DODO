@@ -16,5 +16,5 @@ public class Worker {
     private String phoneNumber;
     private String login;
     private String password;
-    private UserType userType;
+    private WorkerType workerType;
 }

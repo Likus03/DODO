@@ -1,8 +1,6 @@
 package by.It.academy.mapper;
 
 import by.It.academy.entities.Order;
-import by.It.academy.entities.UserType;
-import by.It.academy.entities.Worker;
 import by.It.academy.utils.Constants;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +24,7 @@ public class OrderMapper {
                 .cost(Float.parseFloat(request.getParameter(Constants.COST)))
                 .address(request.getParameter(Constants.ADDRESS))
                 .deliveryTime(LocalTime.parse(request.getParameter(Constants.DELIVERY_TIME)))
+                .completed(false)
                 .build();
     }
 }

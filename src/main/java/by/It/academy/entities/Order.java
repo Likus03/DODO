@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Time;
 import java.time.LocalTime;
 
 @Data
@@ -19,4 +18,5 @@ public class Order {
     private float cost;
     private String address;
     private LocalTime deliveryTime;
+    private boolean completed;
 }

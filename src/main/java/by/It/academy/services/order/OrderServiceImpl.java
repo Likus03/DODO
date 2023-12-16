@@ -1,11 +1,8 @@
 package by.It.academy.services.order;
 
 import by.It.academy.entities.Order;
-import by.It.academy.entities.Worker;
 import by.It.academy.repositories.order.OrderRepository;
 import by.It.academy.repositories.order.OrderRepositoryImpl;
-import by.It.academy.services.worker.WorkerService;
-import by.It.academy.services.worker.WorkerServiceImpl;
 
 import java.util.List;
 
@@ -18,9 +15,11 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<Order> read() {
-        return orderRepository.read();
+    public List<Order> readNotCompleted() {
+        return orderRepository.readNotCompleted();
     }
+    @Override
+    public List<Order> readAll(){return orderRepository.readAll();}
 
     @Override
     public void create(Order order) {
@@ -40,6 +39,10 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Order getById(long id) {
         return orderRepository.getById(id);
+    }
+    @Override
+    public void completeOrder(Order order){
+        orderRepository.completeOrder(order);
     }
 
     public static OrderService getInstance(){

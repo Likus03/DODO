@@ -1,6 +1,6 @@
 package by.It.academy.repositories.worker;
 
-import by.It.academy.entities.UserType;
+import by.It.academy.entities.WorkerType;
 import by.It.academy.entities.Worker;
 
 import java.util.ArrayList;
@@ -13,12 +13,12 @@ public class WorkerRepositoryImpl implements WorkerRepository {
     private static long id=7;
 
     private WorkerRepositoryImpl() {
-        workers.add(new Worker(1L, "Tom", "Cat", "80443789123", "admin", "admin", UserType.ADMIN));
-        workers.add(new Worker(2L, "Tom", "Cat", "80443789123", "1", "1", UserType.ADMIN));
-        workers.add(new Worker(3L, "Alex", "Bon", "80442599163", "11", "11", UserType.MANAGER));
-        workers.add(new Worker(4L, "Rick", "Gan", "80443971123", "gr", "22", UserType.KITCHEN_WORKER));
-        workers.add(new Worker(5L, "Jake", "Zek", "80443171123", "33", "33", UserType.COURIER));
-        workers.add(new Worker(6L, "Li", "Ran", "80441271123", "io", "44", UserType.KITCHEN_WORKER));
+        workers.add(new Worker(1L, "Tom", "Cat", "80443789123", "admin", "admin", WorkerType.ADMIN));
+        workers.add(new Worker(2L, "Bin", "Run", "80441271223", "33", "33", WorkerType.COURIER));
+        workers.add(new Worker(3L, "Tom", "Cat", "80443789123", "1", "1", WorkerType.ADMIN));
+        workers.add(new Worker(4L, "Alex", "Bon", "80442599163", "11", "11", WorkerType.MANAGER));
+        workers.add(new Worker(5L, "Rick", "Gan", "80443971123", "gr", "22", WorkerType.KITCHEN_WORKER));
+        workers.add(new Worker(6L, "Jake", "Zek", "80443171123", "55", "55", WorkerType.COURIER));
     }
 
     @Override
