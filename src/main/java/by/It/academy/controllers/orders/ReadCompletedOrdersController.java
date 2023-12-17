@@ -1,4 +1,4 @@
-package by.It.academy.controllers.couriers;
+package by.It.academy.controllers.orders;
 
 import by.It.academy.entities.CompletedOrder;
 import by.It.academy.entities.Order;

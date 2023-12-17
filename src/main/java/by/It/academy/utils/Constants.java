@@ -22,6 +22,7 @@ public class Constants {
     public static final String TAKE_ORDER_PAGE = "/pages/orders/takeOrder.jsp";
     public static final String ERROR_LOGIN = "/pages/errors/errorLogIn.jsp";
     public static final String ERROR_SING_UP = "/pages/errors/errorSingUp.jsp";
+    public static final String ERROR_ACCESS = "/pages/errors/errorAccess.jsp";
     public static final String MAIN_PAGE = "/index.html";
     public static final String WORKER_TYPE = "workerType";
 }

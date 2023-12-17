@@ -41,8 +41,10 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public void update(Worker worker) {
-        Worker findWorker = workers.stream().filter(o -> Objects.equals(o.getIdWorker(), worker.getIdWorker())).findFirst().get();
-        workers.set(workers.indexOf(findWorker), worker);
+       workers.stream()
+                .filter(o -> Objects.equals(o.getIdWorker(), worker.getIdWorker()))
+                .findFirst()
+                .ifPresent(findWorker ->  workers.set(workers.indexOf(findWorker), worker));
     }
 
     @Override

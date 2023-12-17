@@ -32,7 +32,7 @@
       <td>${workers.surname}</td>
       <td>${workers.phoneNumber}</td>
       <td>${workers.workerType}</td>
-      <td><input type="radio" name="idWorker" value="${workers.id}"></td>
+      <td><input type="radio" name="idWorker" value="${workers.idWorker}"></td>
     </tr>
     </c:forEach>
   </tbody>

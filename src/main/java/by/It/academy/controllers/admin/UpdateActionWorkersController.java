@@ -14,7 +14,6 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/updateAction")
 public class UpdateActionWorkersController extends HttpServlet {
     private final WorkerRepository repository = WorkerRepositoryImpl.getInstance();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");

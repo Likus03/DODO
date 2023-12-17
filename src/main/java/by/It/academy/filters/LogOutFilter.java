@@ -12,9 +12,7 @@ import java.io.IOException;
 public class LogOutFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpSession session = req.getSession();
-        session.invalidate();
-
+        req.getSession().invalidate();
         req.getRequestDispatcher(Constants.MAIN_PAGE).forward(req, res);
 
         chain.doFilter(req, res);
