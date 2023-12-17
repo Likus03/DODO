@@ -6,7 +6,7 @@ import by.It.academy.services.completedOrder.CompletedOrderService;
 import by.It.academy.services.completedOrder.CompletedOrderServiceImpl;
 import by.It.academy.services.order.OrderService;
 import by.It.academy.services.order.OrderServiceImpl;
-
+import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = "/readCompletedOrders")
 public class ReadCompletedOrdersController extends HttpServlet {
-    CompletedOrderService completedOrderService = CompletedOrderServiceImpl.getInstance();
-    OrderService orderService = OrderServiceImpl.getInstance();
+    private final CompletedOrderService completedOrderService = CompletedOrderServiceImpl.getInstance();
+    private final OrderService orderService = OrderServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class ReadCompletedOrdersController extends HttpServlet {
         List<Order> completedCourierOrders = findCompletedCourierOrders(orders, completedOrders);
 
         req.setAttribute("completedCourierOrders", completedCourierOrders);
-        req.getRequestDispatcher("/pages/orders/readCompletedOrders.jsp").forward(req, resp);
+        req.getRequestDispatcher(Constants.READ_COMPLETED_COURIERS_ORDERS_PAGE).forward(req, resp);
     }
 
     private static List<Order> findCompletedCourierOrders(List<Order> orders, List<CompletedOrder> completedOrders) {

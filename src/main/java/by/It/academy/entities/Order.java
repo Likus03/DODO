@@ -12,11 +12,11 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-    private long id;
-    private int idOrder;
+    private Long id;
+    private Long idOrder;
     private String describe;
-    private float cost;
+    private Float cost;
     private String address;
     private LocalTime deliveryTime;
-    private boolean completed;
+    private Boolean completed;
 }

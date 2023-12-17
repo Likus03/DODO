@@ -4,6 +4,7 @@ import by.It.academy.entities.Worker;
 import by.It.academy.mapper.WorkerMapper;
 import by.It.academy.services.worker.WorkerService;
 import by.It.academy.services.worker.WorkerServiceImpl;
+import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +22,14 @@ public class UpdateWorkersController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Worker> workers = workerService.read();
         req.setAttribute("workers", workers);
-        req.getRequestDispatcher("/pages/admin/updateWorkers.jsp").forward(req, resp);
+        req.getRequestDispatcher(Constants.UPDATE_WORKER_PAGE).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.valueOf(req.getParameter("id"));
         Worker worker = workerMapper.buildWorker(req);
-        worker.setId(id);
+        worker.setIdWorker(id);
         workerService.update(worker);
         doGet(req, resp);
     }

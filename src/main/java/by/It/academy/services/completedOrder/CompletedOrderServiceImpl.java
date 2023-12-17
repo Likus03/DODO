@@ -1,13 +1,8 @@
 package by.It.academy.services.completedOrder;
 
 import by.It.academy.entities.CompletedOrder;
-import by.It.academy.entities.Order;
 import by.It.academy.repositories.completedOrder.CompletedOrderRepository;
 import by.It.academy.repositories.completedOrder.CompletedOrderRepositoryImpl;
-import by.It.academy.repositories.order.OrderRepository;
-import by.It.academy.repositories.order.OrderRepositoryImpl;
-import by.It.academy.services.order.OrderService;
-import by.It.academy.services.order.OrderServiceImpl;
 
 import java.util.List;
 

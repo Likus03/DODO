@@ -10,7 +10,7 @@ import java.util.Objects;
 public class WorkerRepositoryImpl implements WorkerRepository {
     private static WorkerRepository workerRepository;
     private static final List<Worker> workers = new ArrayList<>();
-    private static long id=7;
+    private static Long id = 7L;
 
     private WorkerRepositoryImpl() {
         workers.add(new Worker(1L, "Tom", "Cat", "80443789123", "admin", "admin", WorkerType.ADMIN));
@@ -23,7 +23,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public void create(Worker worker) {
-        worker.setId(id++);
+        worker.setIdWorker(id++);
         workers.add(worker);
     }
 
@@ -41,19 +41,17 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public void update(Worker worker) {
-        Worker findWorker = workers.stream().filter(o -> Objects.equals(o.getId(), worker.getId())).findFirst().get();
+        Worker findWorker = workers.stream().filter(o -> Objects.equals(o.getIdWorker(), worker.getIdWorker())).findFirst().get();
         workers.set(workers.indexOf(findWorker), worker);
     }
 
     @Override
     public void delete(long id) {
-        workers.removeIf(workerTemp -> workerTemp.getId()==id);
+        workers.removeIf(workerTemp -> workerTemp.getIdWorker() == id);
     }
 
     @Override
     public Worker getById(long id) {
-        return workers.stream().filter(workerTemp -> workerTemp.getId()==id).findFirst().get();
+        return workers.stream().filter(workerTemp -> workerTemp.getIdWorker() == id).findFirst().get();
     }
-
-
 }

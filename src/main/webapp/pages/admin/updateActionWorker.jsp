@@ -20,10 +20,10 @@
             <td><input type="text" name="surname" value="${worker.surname}"></td>
             <td><input type="text" name="phoneNumber" value="${worker.phoneNumber}"></td>
             <td><input type="submit" name="buttonCreate" value="update"></td>
-            <td><input type="hidden" name="id" value="${worker.id}" ></td>
+            <td><input type="hidden" name="id" value="${worker.idWorker}" ></td>
             <td><input type="hidden" name="login" value="${worker.login}"></td>
             <td><input type="hidden" name="password" value="${worker.password}"></td>
-            <td><input type="hidden" name="role" value="${worker.userType}"></td>
+            <td><input type="hidden" name="workerType" value="${worker.workerType}"></td>
         </tr>
     </form>
     </tbody>

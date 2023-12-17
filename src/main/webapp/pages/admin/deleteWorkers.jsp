@@ -31,8 +31,8 @@
       <td>${workers.firstname}</td>
       <td>${workers.surname}</td>
       <td>${workers.phoneNumber}</td>
-      <td>${workers.userType}</td>
-      <td><input type="radio" name="radioGroup" value="${workers.id}"></td>
+      <td>${workers.workerType}</td>
+      <td><input type="radio" name="idWorker" value="${workers.id}"></td>
     </tr>
     </c:forEach>
   </tbody>

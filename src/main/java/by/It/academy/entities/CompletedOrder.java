@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CompletedOrder {
-    private long id;
-    private long idCourier;
-    private long idOrder;
+    private Long id;
+    private Long idCourier;
+    private Long idOrder;
 }

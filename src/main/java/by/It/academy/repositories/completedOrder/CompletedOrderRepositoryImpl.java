@@ -7,16 +7,17 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class CompletedOrderRepositoryImpl implements CompletedOrderRepository{
+public class CompletedOrderRepositoryImpl implements CompletedOrderRepository {
     private static CompletedOrderRepository completedOrderRepository;
     private static final List<CompletedOrder> completedOrders = new ArrayList<>();
-    private static long id=4;
+    private static Long id = 4L;
 
-    private CompletedOrderRepositoryImpl(){
-        completedOrders.add(new CompletedOrder(1, 1, 3));
-        completedOrders.add(new CompletedOrder(2, 2, 4));
-        completedOrders.add(new CompletedOrder(3, 2, 1));
+    private CompletedOrderRepositoryImpl() {
+        completedOrders.add(new CompletedOrder(1L, 1L, 3L));
+        completedOrders.add(new CompletedOrder(2L, 2L, 4L));
+        completedOrders.add(new CompletedOrder(3L, 2L, 1L));
     }
+
     @Override
     public void create(CompletedOrder completedOrder) {
         completedOrder.setId(id++);
@@ -45,11 +46,11 @@ public class CompletedOrderRepositoryImpl implements CompletedOrderRepository{
 
     @Override
     public void delete(long id) {
-        completedOrders.removeIf(order -> order.getId()==id);
+        completedOrders.removeIf(order -> order.getId() == id);
     }
 
     @Override
     public CompletedOrder getById(long id) {
-        return completedOrders.stream().filter(order -> order.getId()==id).findFirst().get();
+        return completedOrders.stream().filter(order -> order.getId() == id).findFirst().get();
     }
 }

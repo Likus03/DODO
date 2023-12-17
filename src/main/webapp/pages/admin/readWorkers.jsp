@@ -28,7 +28,7 @@
             <td>${workers.firstname}</td>
             <td>${workers.surname}</td>
             <td>${workers.phoneNumber}</td>
-            <td>${workers.userType}</td>
+            <td>${workers.workerType}</td>
         </tr>
         </c:forEach>
     </tbody>

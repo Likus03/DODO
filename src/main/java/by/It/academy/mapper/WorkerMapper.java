@@ -25,7 +25,7 @@ public class WorkerMapper {
                 .phoneNumber(request.getParameter(Constants.PHONE_NUMBER))
                 .login(request.getParameter(Constants.LOGIN))
                 .password(request.getParameter(Constants.PASSWORD))
-                .workerType(WorkerType.valueOf(request.getParameter("role").toUpperCase()))
+                .workerType(WorkerType.valueOf(request.getParameter(Constants.WORKER_TYPE).toUpperCase()))
                 .build();
     }
 }

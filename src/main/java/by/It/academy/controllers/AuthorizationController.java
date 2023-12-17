@@ -3,6 +3,7 @@ package by.It.academy.controllers;
 import by.It.academy.entities.Worker;
 import by.It.academy.services.worker.WorkerService;
 import by.It.academy.services.worker.WorkerServiceImpl;
+import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +19,6 @@ import java.util.Optional;
 @WebServlet(urlPatterns = "/authorization")
 public class AuthorizationController extends HttpServlet {
     private final WorkerService workerService = WorkerServiceImpl.getInstance();
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Worker> workers = workerService.read();
@@ -27,16 +27,15 @@ public class AuthorizationController extends HttpServlet {
 
         switch (user.get().getWorkerType()) {  //TODO:нужен чек
             case ADMIN: {
-                req.getRequestDispatcher("/pages/admin/admin.jsp").forward(req, resp);
+                req.getRequestDispatcher(Constants.ADMIN_PAGE).forward(req, resp);
             }
             case COURIER: {
                 HttpSession session = req.getSession(true);
-                session.setAttribute("idWorker", user.get().getId());
+                session.setAttribute("idWorker", user.get().getIdWorker());
                 session.setAttribute("typeWorker", user.get().getWorkerType());
 
-                req.getRequestDispatcher("/pages/orders/couriersPage.jsp").forward(req, resp);
+                req.getRequestDispatcher(Constants.COURIERS_PAGE).forward(req, resp);
                 //перейти к сменам
-                //перейти к завершенным заказам
             }
             case MANAGER:{
                 //перейти к сменам
@@ -45,7 +44,7 @@ public class AuthorizationController extends HttpServlet {
                 //перейти к сменам
             }
             default:{
-                req.getRequestDispatcher("/pages/errors/errorLogIn.jsp").forward(req, resp);
+                req.getRequestDispatcher(Constants.ERROR_LOGIN).forward(req, resp);
             }
         }
 //        if (user.isEmpty()) {

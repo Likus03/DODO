@@ -3,6 +3,7 @@ package by.It.academy.controllers.couriers;
 import by.It.academy.entities.Order;
 import by.It.academy.services.order.OrderService;
 import by.It.academy.services.order.OrderServiceImpl;
+import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,17 +15,12 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/readOrders")
 public class ReadOrdersController extends HttpServlet {
-
-    OrderService orderService = OrderServiceImpl.getInstance();
+    private final OrderService orderService = OrderServiceImpl.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Order> orders = orderService.readNotCompleted();
         req.setAttribute("orders", orders);
-        req.getRequestDispatcher("/pages/orders/readOrders.jsp").forward(req, resp);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req,resp);
+        req.getRequestDispatcher(Constants.READ_ORDERS_PAGE).forward(req, resp);
     }
 }

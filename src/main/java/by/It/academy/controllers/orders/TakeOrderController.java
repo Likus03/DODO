@@ -7,6 +7,7 @@ import by.It.academy.services.completedOrder.CompletedOrderService;
 import by.It.academy.services.completedOrder.CompletedOrderServiceImpl;
 import by.It.academy.services.order.OrderService;
 import by.It.academy.services.order.OrderServiceImpl;
+import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,15 +19,15 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/takeOrder")
 public class TakeOrderController extends HttpServlet {
-    OrderService orderService = OrderServiceImpl.getInstance();
-    CompletedOrderService completedOrderService = CompletedOrderServiceImpl.getInstance();
+    private final OrderService orderService = OrderServiceImpl.getInstance();
+    private final CompletedOrderService completedOrderService = CompletedOrderServiceImpl.getInstance();
     private final CompletedOrderMapper completedOrderMapper = CompletedOrderMapper.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Order> orders = orderService.readNotCompleted();
         req.setAttribute("orders", orders);
-        req.getRequestDispatcher("/pages/orders/takeOrder.jsp").forward(req, resp);
+        req.getRequestDispatcher(Constants.TAKE_ORDER_PAGE).forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

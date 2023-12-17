@@ -23,7 +23,7 @@
       <td><input type="text" name="deliveryType" placeholder="put your delivery type"></td>
       <td><input type="text" name="login" placeholder="put your login"></td>
       <td><input type="text" name="password" placeholder="put your password"></td>
-      <td><select name="role" size="1">
+      <td><select name="workerType" size="1">
         <option selected value="Manager">Manager</option>
         <option value="Courier">Courier</option>
         <option value="KitchenWorker">Kitchen Worker</option>

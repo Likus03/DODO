@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Worker {
-    private Long id;
+    private Long idWorker;
     private String firstname;
     private String surname;
     private String phoneNumber;

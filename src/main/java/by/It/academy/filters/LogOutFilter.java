@@ -1,5 +1,7 @@
 package by.It.academy.filters;
 
+import by.It.academy.utils.Constants;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -13,7 +15,7 @@ public class LogOutFilter extends HttpFilter {
         HttpSession session = req.getSession();
         session.invalidate();
 
-        req.getRequestDispatcher("/index.html").forward(req, res);
+        req.getRequestDispatcher(Constants.MAIN_PAGE).forward(req, res);
 
         chain.doFilter(req, res);
     }
