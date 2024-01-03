@@ -12,6 +12,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     private static OrderRepository orderRepository;
     private static final List<Order> orders = new ArrayList<>();
     private static Long id = 7L, idOrder = 7L;
+
     public static OrderRepository getInstance() {
         if (orderRepository == null) {
             orderRepository = new OrderRepositoryImpl();
@@ -34,10 +35,11 @@ public class OrderRepositoryImpl implements OrderRepository {
         order.setIdOrder(idOrder++);
         orders.add(order);
     }
+
     @Override
     public List<Order> readNotCompleted() {
         return orders.stream()
-                .filter(order -> !order.getCompleted()) //TODO:???
+                .filter(order -> !order.getCompleted())
                 .collect(Collectors.toList());
     }
 
@@ -47,9 +49,11 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public void update(Order order) {
-        Order findOrder = orders.stream().filter(o -> Objects.equals(o.getId(), order.getId())).findFirst().get();
-        orders.set(orders.indexOf(findOrder), order);
+    public List<Order> update(Order order) {
+        return orders.stream()
+                .map(e -> Objects.equals(e.getId(), order.getId()) ? order : e)
+                .collect(Collectors.toList());
+
     }
 
     @Override

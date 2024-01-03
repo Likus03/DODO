@@ -25,8 +25,8 @@ public class CompletedOrderServiceImpl implements CompletedOrderService{
     }
 
     @Override
-    public void update(CompletedOrder completedOrder) {
-        completedOrderRepository.update(completedOrder);
+    public List<CompletedOrder> update(CompletedOrder completedOrder) {
+        return completedOrderRepository.update(completedOrder);
     }
 
     @Override

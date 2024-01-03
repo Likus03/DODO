@@ -6,7 +6,6 @@ import by.It.academy.services.completedOrder.CompletedOrderService;
 import by.It.academy.services.completedOrder.CompletedOrderServiceImpl;
 import by.It.academy.services.order.OrderService;
 import by.It.academy.services.order.OrderServiceImpl;
-import by.It.academy.utils.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static by.It.academy.utils.Constants.READ_COMPLETED_COURIERS_ORDERS_PAGE;
 
 @WebServlet(urlPatterns = "/readCompletedOrders")
 public class ReadCompletedOrdersController extends HttpServlet {
@@ -30,14 +32,16 @@ public class ReadCompletedOrdersController extends HttpServlet {
         List<Order> completedCourierOrders = findCompletedCourierOrders(orders, completedOrders);
 
         req.setAttribute("completedCourierOrders", completedCourierOrders);
-        req.getRequestDispatcher(Constants.READ_COMPLETED_COURIERS_ORDERS_PAGE).forward(req, resp);
+        req.getRequestDispatcher(READ_COMPLETED_COURIERS_ORDERS_PAGE).forward(req, resp);
     }
 
-    private static List<Order> findCompletedCourierOrders(List<Order> orders, List<CompletedOrder> completedOrders) {
+    private List<Order> findCompletedCourierOrders(List<Order> orders, List<CompletedOrder> completedOrders) {
         return completedOrders.stream()
                 .map(completedOrder -> orders.stream()
-                        .filter(order -> order.getIdOrder() == completedOrder.getIdOrder())
-                        .findFirst().get())
+                        .filter(order -> Objects.equals(order.getIdOrder(), completedOrder.getIdOrder()))
+                        .findFirst()
+                        .orElse(null))
+                        .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 }

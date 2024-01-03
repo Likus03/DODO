@@ -39,9 +39,10 @@ public class CompletedOrderRepositoryImpl implements CompletedOrderRepository {
     }
 
     @Override
-    public void update(CompletedOrder completedOrder) {
-        CompletedOrder findOrder = completedOrders.stream().filter(o -> Objects.equals(o.getId(), completedOrder.getId())).findFirst().get();
-        completedOrders.set(completedOrders.indexOf(findOrder), completedOrder);
+    public List<CompletedOrder> update(CompletedOrder completedOrder) {
+        return completedOrders.stream()
+                .map(order -> Objects.equals(order.getId(), completedOrder.getId()) ? completedOrder : order)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -51,6 +52,9 @@ public class CompletedOrderRepositoryImpl implements CompletedOrderRepository {
 
     @Override
     public CompletedOrder getById(long id) {
-        return completedOrders.stream().filter(order -> order.getId() == id).findFirst().get();
+        return completedOrders.stream()
+                .filter(order -> order.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 }

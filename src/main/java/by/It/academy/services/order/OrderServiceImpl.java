@@ -27,8 +27,8 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public void update(Order order) {
-        orderRepository.update(order);
+    public List<Order> update(Order order) {
+        return orderRepository.update(order);
     }
 
     @Override

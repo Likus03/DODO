@@ -9,7 +9,7 @@ public interface CompletedOrderRepository {
 
     void create(CompletedOrder completedOrder);
 
-    void update(CompletedOrder completedOrder);
+    List<CompletedOrder> update(CompletedOrder completedOrder);
 
     void delete(long id);
     CompletedOrder getById(long id);

@@ -15,7 +15,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
     private WorkerRepositoryImpl() {
         workers.add(new Worker(1L, "Tom", "Cat", "80443789123", "admin", "admin", WorkerType.ADMIN));
         workers.add(new Worker(2L, "Bin", "Run", "80441271223", "33", "33", WorkerType.COURIER));
-        workers.add(new Worker(3L, "Tom", "Cat", "80443789123", "1", "1", WorkerType.ADMIN));
+        workers.add(new Worker(3L, "Tom", "Cat", "80443789123", "1", "1", WorkerType.COURIER));
         workers.add(new Worker(4L, "Alex", "Bon", "80442599163", "11", "11", WorkerType.MANAGER));
         workers.add(new Worker(5L, "Rick", "Gan", "80443971123", "gr", "22", WorkerType.KITCHEN_WORKER));
         workers.add(new Worker(6L, "Jake", "Zek", "80443171123", "55", "55", WorkerType.COURIER));
@@ -54,6 +54,9 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public Worker getById(long id) {
-        return workers.stream().filter(workerTemp -> workerTemp.getIdWorker() == id).findFirst().get();
+        return workers.stream()
+                .filter(workerTemp -> workerTemp.getIdWorker() == id)
+                .findFirst()
+                .orElse(null);
     }
 }

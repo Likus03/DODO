@@ -9,6 +9,9 @@ public class Constants {
     public static final String DESCRIBE = "describe";
     public static final String COST = "cost";
     public static final String ADDRESS = "address";
+    public static final String WORKERS = "workers";
+
+    public static final String ID_WORKER = "idWorker";
     public static final String DELIVERY_TIME = "deliveryTime";
     public static final String COURIERS_PAGE = "/pages/orders/couriersPage.jsp";
     public static final String ADMIN_PAGE = "/pages/admin/admin.jsp";

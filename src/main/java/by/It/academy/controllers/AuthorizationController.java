@@ -1,9 +1,10 @@
 package by.It.academy.controllers;
 
 import by.It.academy.entities.Worker;
+import by.It.academy.entities.WorkerType;
 import by.It.academy.services.worker.WorkerService;
 import by.It.academy.services.worker.WorkerServiceImpl;
-import by.It.academy.utils.Constants;
+import lombok.SneakyThrows;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,19 +17,24 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static by.It.academy.utils.Constants.*;
+
 @WebServlet(urlPatterns = "/authorization")
 public class AuthorizationController extends HttpServlet {
     private final WorkerService workerService = WorkerServiceImpl.getInstance();
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         List<Worker> workers = workerService.read();
 
-        Optional<Worker> workerOptional = getLoggedWorker(req.getParameter(Constants.LOGIN), req.getParameter(Constants.PASSWORD), workers);
-        if (workerOptional.isPresent()) {
-            menu(workerOptional, req, resp);
-        } else {
-            req.getRequestDispatcher(Constants.ERROR_LOGIN).forward(req, resp);
-        }
+        getLoggedWorker(req.getParameter(LOGIN), req.getParameter(PASSWORD), workers)
+                .ifPresentOrElse(worker -> menu(worker.getWorkerType(), req, resp), () -> forward(req, resp)
+                );
+    }
+
+    @SneakyThrows
+    private void forward(HttpServletRequest req, HttpServletResponse resp) {
+        req.getRequestDispatcher(ERROR_LOGIN).forward(req, resp);
     }
 
     private Optional<Worker> getLoggedWorker(String login, String password, List<Worker> workers) {
@@ -37,24 +43,22 @@ public class AuthorizationController extends HttpServlet {
                 .findFirst();
     }
 
-    private void menu(Optional<Worker> workerOptional, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        switch (workerOptional.get().getWorkerType()) {
-            case ADMIN: {
-                req.getRequestDispatcher(Constants.ADMIN_PAGE).forward(req, resp);
-            }
-            case COURIER: {
-                goToCourier(workerOptional, req, resp);
-            }
-            case MANAGER: {}
-            case KITCHEN_WORKER: {}
+    @SneakyThrows
+    private void menu(WorkerType workerType, HttpServletRequest req, HttpServletResponse resp) {
+        switch (workerType) {
+            case ADMIN -> req.getRequestDispatcher(ADMIN_PAGE).forward(req, resp);
+            case COURIER -> goToCourier(workerType, req, resp);
+            case MANAGER, KITCHEN_WORKER -> {}
+            default -> req.getRequestDispatcher(ERROR_LOGIN).forward(req, resp);
         }
     }
 
-    private void goToCourier(Optional<Worker> workerOptional, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @SneakyThrows
+    private void goToCourier(WorkerType workerType, HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession(true);
-        session.setAttribute("idWorker", workerOptional.get().getIdWorker());
-        session.setAttribute(Constants.WORKER_TYPE, workerOptional.get().getWorkerType());
+        session.setAttribute("idWorker", workerType);
+        session.setAttribute(WORKER_TYPE, workerType);
 
-        req.getRequestDispatcher(Constants.COURIERS_PAGE).forward(req, resp);
+        req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
     }
 }
