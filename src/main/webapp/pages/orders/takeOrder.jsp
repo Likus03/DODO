@@ -32,7 +32,7 @@
                 <td>${orders.cost}</td>
                 <td>${orders.address}</td>
                 <td>${orders.deliveryTime}</td>
-                <td><input type="radio" name="idOrder" value="${orders.id}"></td>
+                <td><input type="radio" name="idOrder" value="${orders.idOrder}"></td>
             </tr>
         </c:forEach>
     </tbody>

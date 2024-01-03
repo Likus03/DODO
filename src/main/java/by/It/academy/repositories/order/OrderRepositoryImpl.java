@@ -63,7 +63,10 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order getById(long id) {
-        return orders.stream().filter(order -> order.getId() == id).findFirst().get();
+        return orders.stream()
+                .filter(order -> order.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

@@ -6,13 +6,11 @@ import by.It.academy.services.worker.WorkerService;
 import by.It.academy.services.worker.WorkerServiceImpl;
 import lombok.SneakyThrows;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,7 +26,7 @@ public class AuthorizationController extends HttpServlet {
         List<Worker> workers = workerService.read();
 
         getLoggedWorker(req.getParameter(LOGIN), req.getParameter(PASSWORD), workers)
-                .ifPresentOrElse(worker -> menu(worker.getWorkerType(), req, resp), () -> forward(req, resp)
+                .ifPresentOrElse(worker -> menu(worker.getWorkerType(), worker.getIdWorker(), req, resp), () -> forward(req, resp)
                 );
     }
 
@@ -44,20 +42,22 @@ public class AuthorizationController extends HttpServlet {
     }
 
     @SneakyThrows
-    private void menu(WorkerType workerType, HttpServletRequest req, HttpServletResponse resp) {
+    private void menu(WorkerType workerType, long idWorker, HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession(true);
+        session.setAttribute(WORKER_TYPE, workerType);
+
         switch (workerType) {
             case ADMIN -> req.getRequestDispatcher(ADMIN_PAGE).forward(req, resp);
-            case COURIER -> goToCourier(workerType, req, resp);
+            case COURIER -> goToCourier(idWorker, req, resp);
             case MANAGER, KITCHEN_WORKER -> {}
             default -> req.getRequestDispatcher(ERROR_LOGIN).forward(req, resp);
         }
     }
 
     @SneakyThrows
-    private void goToCourier(WorkerType workerType, HttpServletRequest req, HttpServletResponse resp) {
+    private void goToCourier(long idWorker, HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession(true);
-        session.setAttribute("idWorker", workerType);
-        session.setAttribute(WORKER_TYPE, workerType);
+        session.setAttribute("idWorker", idWorker);
 
         req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
     }
