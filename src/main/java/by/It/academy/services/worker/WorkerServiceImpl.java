@@ -47,10 +47,10 @@ public class WorkerServiceImpl implements WorkerService {
         workerRepository.delete(id);
     }
 
-//    @Override
-//    public Worker getById(long id) {
-//        return workerRepository.getById(id);
-//    }
+    @Override
+    public Worker getById(long id) {
+        return workerRepository.getById(id);
+    }
 
 
 }

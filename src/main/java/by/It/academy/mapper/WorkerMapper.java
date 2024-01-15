@@ -1,6 +1,6 @@
 package by.It.academy.mapper;
 
-import by.It.academy.entities.WorkerType;
+import by.It.academy.WorkerType;
 import by.It.academy.entities.Worker;
 import static by.It.academy.utils.Constants.*;
 

@@ -2,7 +2,6 @@ package by.It.academy.mapper;
 
 import by.It.academy.entities.User;
 import by.It.academy.entities.Worker;
-import by.It.academy.entities.WorkerType;
 
 import javax.servlet.http.HttpServletRequest;
 

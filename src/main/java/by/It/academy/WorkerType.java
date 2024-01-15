@@ -1,4 +1,4 @@
-package by.It.academy.entities;
+package by.It.academy;
 
 public enum WorkerType {
     ADMIN,

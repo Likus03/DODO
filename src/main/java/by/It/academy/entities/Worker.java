@@ -1,5 +1,6 @@
 package by.It.academy.entities;
 
+import by.It.academy.WorkerType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

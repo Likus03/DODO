@@ -1,7 +1,7 @@
 package by.It.academy.controllers;
 
 import by.It.academy.entities.User;
-import by.It.academy.entities.WorkerType;
+import by.It.academy.WorkerType;
 import by.It.academy.services.user.UserService;
 import by.It.academy.services.user.UserServiceImpl;
 import lombok.SneakyThrows;

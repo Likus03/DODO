@@ -11,5 +11,5 @@ public interface WorkerService {
 //    void create(User user);
     void update(Worker worker);
     void delete(long id);
-//    Worker getById(long id);
+    Worker getById(long id);
 }

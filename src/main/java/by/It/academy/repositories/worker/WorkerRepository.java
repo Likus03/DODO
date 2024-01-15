@@ -1,8 +1,7 @@
 package by.It.academy.repositories.worker;
-import by.It.academy.entities.User;
+
 import by.It.academy.entities.Worker;
 
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 public interface WorkerRepository{
@@ -14,5 +13,5 @@ public interface WorkerRepository{
     void update(Worker worker);
 
     void delete(long id);
-//    Worker getById(long id);
+    Worker getById(long id);
 }

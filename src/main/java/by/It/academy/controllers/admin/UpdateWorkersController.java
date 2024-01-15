@@ -29,6 +29,7 @@ public class UpdateWorkersController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.valueOf(req.getParameter("id"));
+
         Worker worker = workerMapper.buildWorker(req);
         worker.setIdWorker(id);
         workerService.update(worker);

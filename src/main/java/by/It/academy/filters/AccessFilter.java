@@ -1,6 +1,6 @@
 //package by.It.academy.filters;
 //
-//import by.It.academy.entities.WorkerType;
+//import by.It.academy.WorkerType;
 //
 //import javax.servlet.*;
 //import javax.servlet.annotation.WebFilter;

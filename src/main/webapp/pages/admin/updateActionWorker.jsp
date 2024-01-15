@@ -23,8 +23,6 @@
             <td><input type="text" name="workerType" value="${worker.workerType}"></td>
             <td><input type="submit" name="buttonCreate" value="update"></td>
             <td><input type="hidden" name="id" value="${worker.idWorker}" ></td>
-            <td><input type="hidden" name="login" value="${worker.login}"></td>
-            <td><input type="hidden" name="password" value="${worker.password}"></td>
 
         </tr>
     </form>
