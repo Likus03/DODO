@@ -1,6 +1,7 @@
 <html>
-<title>Create worker</title>
-<head>Create new Worker</head>
+<head>Create new Worker
+  <title>Create worker</title>
+</head>
 <body>
 <table>
   <thead>
@@ -8,7 +9,6 @@
     <th>firstname</th>
     <th>family</th>
     <th>phoneNumber</th>
-    <th>deliveryType</th>
     <th>login</th>
     <th>password</th>
     <th>role</th>
@@ -20,7 +20,6 @@
       <td><input type="text" name="firstname" placeholder="put your firstname"></td>
       <td><input type="text" name="surname" placeholder="put your surname"></td>
       <td><input type="text" name="phoneNumber" placeholder="put your phone number"></td>
-      <td><input type="text" name="deliveryType" placeholder="put your delivery type"></td>
       <td><input type="text" name="login" placeholder="put your login"></td>
       <td><input type="text" name="password" placeholder="put your password"></td>
       <td><select name="workerType" size="1">

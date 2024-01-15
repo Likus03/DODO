@@ -18,7 +18,7 @@ public class UpdateActionWorkersController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        req.setAttribute("worker", repository.getById(Long.parseLong(id)));
+//        req.setAttribute("worker", repository.getById(Long.parseLong(id)));
         req.getRequestDispatcher(UPDATE_ACTION_PAGE).forward(req, resp);
     }
 }

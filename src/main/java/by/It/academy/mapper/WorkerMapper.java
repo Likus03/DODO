@@ -23,8 +23,6 @@ public class WorkerMapper {
                 .firstname(request.getParameter(FIRSTNAME))
                 .surname(request.getParameter(SURNAME))
                 .phoneNumber(request.getParameter(PHONE_NUMBER))
-                .login(request.getParameter(LOGIN))
-                .password(request.getParameter(PASSWORD))
                 .workerType(WorkerType.valueOf(request.getParameter(WORKER_TYPE).toUpperCase()))
                 .build();
     }

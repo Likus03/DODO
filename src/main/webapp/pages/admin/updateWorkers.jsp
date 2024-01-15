@@ -18,10 +18,10 @@
 <table width="50%" border="1" rules="all">
     <thead>
     <tr>
-        <th>NAME</th>
-        <th>FAMILY</th>
-        <th>phoneNumber</th>
-        <th>ROLE</th>
+        <th>name</th>
+        <th>family</th>
+        <th>phone Number</th>
+        <th>role</th>
     </tr>
     </thead>
     <tbody>

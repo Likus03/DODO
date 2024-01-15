@@ -10,6 +10,9 @@ public class Constants {
     public static final String COST = "cost";
     public static final String ADDRESS = "address";
     public static final String WORKERS = "workers";
+    public static final String ID_USER = "idUser";
+    public static final String INPUT_SEARCH = "inputSearch";
+
 
     public static final String ID_WORKER = "idWorker";
     public static final String DELIVERY_TIME = "deliveryTime";
@@ -28,4 +31,5 @@ public class Constants {
     public static final String ERROR_ACCESS = "/pages/errors/errorAccess.jsp";
     public static final String MAIN_PAGE = "/index.html";
     public static final String WORKER_TYPE = "workerType";
+    public static final String READ_BY_SEARCH = "/pages/admin/readBySearch.jsp";
 }

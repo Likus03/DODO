@@ -5,4 +5,7 @@ public enum WorkerType {
     MANAGER,
     COURIER,
     KITCHEN_WORKER;
+
+    WorkerType() {
+    }
 }

@@ -1,4 +1,4 @@
-package by.It.academy.util;
+package by.It.academy.utils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

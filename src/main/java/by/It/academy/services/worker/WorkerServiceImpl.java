@@ -1,17 +1,25 @@
 package by.It.academy.services.worker;
 
+import by.It.academy.entities.User;
 import by.It.academy.entities.Worker;
 import by.It.academy.repositories.worker.WorkerRepository;
 import by.It.academy.repositories.worker.WorkerRepositoryImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkerServiceImpl implements WorkerService {
     private final WorkerRepository workerRepository = WorkerRepositoryImpl.getInstance();
-
     private static WorkerService workerService;
 
     private WorkerServiceImpl() {
+    }
+
+    public static WorkerService getInstance() {
+        if (workerService == null) {
+            workerService = new WorkerServiceImpl();
+        }
+        return workerService;
     }
 
     @Override
@@ -20,30 +28,29 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public void create(Worker worker) {
-        workerRepository.create(worker);
+    public List<Worker> readBySearch(String parameter) {
+        return workerRepository.readBySearch(parameter);
     }
+
+//    @Override
+//    public void create(User user) {
+//        workerRepository.create(user);
+//    }
 
     @Override
     public void update(Worker worker) {
-workerRepository.update(worker);
+        workerRepository.update(worker);
     }
 
     @Override
     public void delete(long id) {
-workerRepository.delete(id);
+        workerRepository.delete(id);
     }
 
-    @Override
-    public Worker getById(long id) {
-        return workerRepository.getById(id);
-    }
+//    @Override
+//    public Worker getById(long id) {
+//        return workerRepository.getById(id);
+//    }
 
-    public static WorkerService getInstance(){
 
-        if(workerService == null){
-            workerService = new WorkerServiceImpl();
-        }
-        return workerService;
-    }
 }

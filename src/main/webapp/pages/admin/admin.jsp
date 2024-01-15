@@ -12,6 +12,9 @@
 <form action="/read" method="get">
     <input type="submit" value="read">
 </form>
+<form action="/readBySearch" method="get">
+    <input type="submit" value="readBySearch">
+</form>
 <form action="/update" method="get">
     <input type="submit" value="update">
 </form>

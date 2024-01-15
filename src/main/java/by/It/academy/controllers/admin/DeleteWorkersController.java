@@ -1,6 +1,8 @@
 package by.It.academy.controllers.admin;
 
 import by.It.academy.entities.Worker;
+import by.It.academy.services.user.UserService;
+import by.It.academy.services.user.UserServiceImpl;
 import by.It.academy.services.worker.WorkerService;
 import by.It.academy.services.worker.WorkerServiceImpl;
 
@@ -17,6 +19,7 @@ import static by.It.academy.utils.Constants.*;
 @WebServlet(urlPatterns = "/delete")
 public class DeleteWorkersController extends HttpServlet {
     private final WorkerService workerService = WorkerServiceImpl.getInstance();
+    private final UserService userService = UserServiceImpl.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Worker> workers = workerService.read();
@@ -26,7 +29,7 @@ public class DeleteWorkersController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter(ID_WORKER);
-        workerService.delete(Long.parseLong(id));
+        userService.delete(Long.parseLong(id));
         doGet(req,resp);
     }
 }
