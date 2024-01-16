@@ -8,7 +8,6 @@
 <table width="50%" border="1" rules="all">
     <thead>
     <tr>
-        <th>IdOrder</th>
         <th>DESCRIBE</th>
         <th>COST</th>
         <th>ADDRESS</th>
@@ -16,13 +15,12 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="completedCourierOrders" items="${completedCourierOrders}">
+    <c:forEach var="orders" items="${orders}">
         <tr>
-            <td>${completedCourierOrders.idOrder}</td>
-            <td>${completedCourierOrders.describe}</td>
-            <td>${completedCourierOrders.cost}</td>
-            <td>${completedCourierOrders.address}</td>
-            <td>${completedCourierOrders.deliveryTime}</td>
+            <td>${orders.describe}</td>
+            <td>${orders.cost}</td>
+            <td>${orders.address}</td>
+            <td>${orders.deliveryTime}</td>
         </tr>
     </c:forEach>
     </tbody>

@@ -1,17 +1,21 @@
 package by.It.academy.repositories.order;
 
 import by.It.academy.entities.Order;
+import by.It.academy.utils.JPAUtil;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class OrderRepositoryImpl implements OrderRepository {
     private static OrderRepository orderRepository;
-    private static final List<Order> orders = new ArrayList<>();
-    private static Long id = 7L, idOrder = 7L;
 
     public static OrderRepository getInstance() {
         if (orderRepository == null) {
@@ -21,52 +25,64 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     private OrderRepositoryImpl() {
-        orders.add(new Order(1L, 1L, "Pepperoni", 32.4F, "Miroshnichenko 32, 34", LocalTime.of(12, 30), true));
-        orders.add(new Order(2L, 2L, "Margherita, Chessy", 76.4F, "Kireeva 43, 62", LocalTime.of(15, 50), false));
-        orders.add(new Order(3L, 3L, "Hawai", 23.8F, "Mihalova 42, 63", LocalTime.of(19, 10), true));
-        orders.add(new Order(4L, 4L, "Double Pepperoni", 41.0F, "Pushkinskaya 21, 90", LocalTime.of(17, 40), true));
-        orders.add(new Order(5L, 5L, "Chicken BBQ", 31.5F, "Volgagradskaya 97, 87", LocalTime.of(13, 55), false));
-        orders.add(new Order(6L, 6L, "Carbonara", 27.3F, "Uruchskaya 77, 32", LocalTime.of(13, 50), false));
     }
 
     @Override
     public void create(Order order) {
-        order.setId(id++);
-        order.setIdOrder(idOrder++);
-        orders.add(order);
+        EntityManager entityManager = JPAUtil.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        entityManager.persist(order);
+        transaction.commit();
     }
 
     @Override
     public List<Order> readNotCompleted() {
-        return orders.stream()
-                .filter(order -> !order.getCompleted())
-                .collect(Collectors.toList());
+        return null;
+//        return orders.stream()
+//                .filter(order -> !order.getCompleted())
+//                .collect(Collectors.toList());
     }
 
     @Override
     public List<Order> readAll() {
+        EntityManager entityManager = JPAUtil.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Order> criteriaQuery = builder.createQuery(Order.class);
+
+        criteriaQuery.select(criteriaQuery.from(Order.class));
+
+        TypedQuery<Order> query = entityManager.createQuery(criteriaQuery);
+        List<Order> orders = query.getResultList();
+
+        transaction.commit();
         return orders;
     }
 
     @Override
     public List<Order> update(Order order) {
-        return orders.stream()
-                .map(e -> Objects.equals(e.getId(), order.getId()) ? order : e)
-                .collect(Collectors.toList());
-
+//        return orders.stream()
+//                .map(e -> Objects.equals(e.getId(), order.getId()) ? order : e)
+//                .collect(Collectors.toList());
+        return null;
     }
 
     @Override
     public void delete(long id) {
-        orders.removeIf(order -> order.getId() == id);
+//        orders.removeIf(order -> order.getId() == id);
     }
 
     @Override
     public Order getById(long id) {
-        return orders.stream()
-                .filter(order -> order.getId() == id)
-                .findFirst()
-                .orElse(null);
+        return null;
+//        return orders.stream()
+//                .filter(order -> order.getId() == id)
+//                .findFirst()
+//                .orElse(null);
     }
 
     @Override

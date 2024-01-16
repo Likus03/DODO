@@ -20,7 +20,7 @@ public class ReadWorkersController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Worker> workers = workerService.read();
+        List<Worker> workers = workerService.readAll();
 
         req.setAttribute("workers", workers);
         req.getRequestDispatcher(READ_WORKERS_PAGE).forward(req, resp);

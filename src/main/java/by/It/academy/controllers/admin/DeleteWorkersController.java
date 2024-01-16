@@ -22,7 +22,7 @@ public class DeleteWorkersController extends HttpServlet {
     private final UserService userService = UserServiceImpl.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Worker> workers = workerService.read();
+        List<Worker> workers = workerService.readAll();
         req.setAttribute(WORKERS, workers);
         req.getRequestDispatcher(DELETE_WORKER_PAGE).forward(req, resp);
     }

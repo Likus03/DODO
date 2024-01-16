@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface WorkerRepository{
 
-    List<Worker> read();
+    List<Worker> readAll();
 
     List<Worker> readBySearch(String parameter);
 

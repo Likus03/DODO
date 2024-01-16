@@ -3,6 +3,7 @@ package by.It.academy.mapper;
 import by.It.academy.entities.Order;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import static by.It.academy.utils.Constants.*;
@@ -24,7 +25,7 @@ public class OrderMapper {
                 .describe(request.getParameter(DESCRIBE))
                 .cost(Float.parseFloat(request.getParameter(COST)))
                 .address(request.getParameter(ADDRESS))
-                .deliveryTime(LocalTime.parse(request.getParameter(DELIVERY_TIME)))
+                .deliveryTime(LocalDateTime.parse(request.getParameter(DELIVERY_TIME)))
                 .completed(false)
                 .build();
     }

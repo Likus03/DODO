@@ -21,7 +21,7 @@ public class UpdateWorkersController extends HttpServlet {
     private final WorkerMapper workerMapper = WorkerMapper.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Worker> workers = workerService.read();
+        List<Worker> workers = workerService.readAll();
         req.setAttribute(WORKERS, workers);
         req.getRequestDispatcher(UPDATE_WORKER_PAGE).forward(req, resp);
     }

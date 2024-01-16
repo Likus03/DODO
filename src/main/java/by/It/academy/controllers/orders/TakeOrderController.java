@@ -1,10 +1,6 @@
 package by.It.academy.controllers.orders;
 
-import by.It.academy.entities.CompletedOrder;
 import by.It.academy.entities.Order;
-import by.It.academy.mapper.CompletedOrderMapper;
-import by.It.academy.services.completedOrder.CompletedOrderService;
-import by.It.academy.services.completedOrder.CompletedOrderServiceImpl;
 import by.It.academy.services.order.OrderService;
 import by.It.academy.services.order.OrderServiceImpl;
 
@@ -21,8 +17,8 @@ import static by.It.academy.utils.Constants.TAKE_ORDER_PAGE;
 @WebServlet(urlPatterns = "/takeOrder")
 public class TakeOrderController extends HttpServlet {
     private final OrderService orderService = OrderServiceImpl.getInstance();
-    private final CompletedOrderService completedOrderService = CompletedOrderServiceImpl.getInstance();
-    private final CompletedOrderMapper completedOrderMapper = CompletedOrderMapper.getInstance();
+//    private final CompletedOrderService completedOrderService = CompletedOrderServiceImpl.getInstance();
+//    private final CompletedOrderMapper completedOrderMapper = CompletedOrderMapper.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,10 +28,10 @@ public class TakeOrderController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CompletedOrder completedOrder = completedOrderMapper.buildCompletedOrder(req);
-        completedOrderService.create(completedOrder);
-
-        orderService.completeOrder(orderService.getById(Long.parseLong(req.getParameter("idOrder"))));
+//        CompletedOrder completedOrder = completedOrderMapper.buildCompletedOrder(req);
+//        completedOrderService.create(completedOrder);
+//
+//        orderService.completeOrder(orderService.getById(Long.parseLong(req.getParameter("idOrder"))));
 
         doGet(req, resp);
     }

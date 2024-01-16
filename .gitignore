@@ -12,6 +12,7 @@ target/
 *.iml
 *.ipr
 pom.xml
+.idea/codeStyles/codeStyleConfig.xml
 
 ### Eclipse ###
 .apt_generated

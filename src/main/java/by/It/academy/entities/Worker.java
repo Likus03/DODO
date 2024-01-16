@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.EnumType.STRING;
 
 @Data
@@ -36,10 +38,15 @@ public class Worker {
     @Enumerated(STRING)
     private WorkerType workerType;
 
-    public Worker(String firstname, String surname, String phoneNumber, WorkerType workerType) {
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "WORKER_ID")
+    private List<Order> orders;
+
+    public Worker(String firstname, String surname, String phoneNumber, WorkerType workerType, List<Order> orders) {
         this.firstname = firstname;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.workerType = workerType;
+        this.orders = orders;
     }
 }

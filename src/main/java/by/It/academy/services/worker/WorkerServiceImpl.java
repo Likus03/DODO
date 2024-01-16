@@ -1,11 +1,9 @@
 package by.It.academy.services.worker;
 
-import by.It.academy.entities.User;
 import by.It.academy.entities.Worker;
 import by.It.academy.repositories.worker.WorkerRepository;
 import by.It.academy.repositories.worker.WorkerRepositoryImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WorkerServiceImpl implements WorkerService {
@@ -23,8 +21,8 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public List<Worker> read() {
-        return workerRepository.read();
+    public List<Worker> readAll() {
+        return workerRepository.readAll();
     }
 
     @Override

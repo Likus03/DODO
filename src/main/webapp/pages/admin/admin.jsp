@@ -10,7 +10,7 @@
     <input type="submit" value="create">
 </form>
 <form action="/read" method="get">
-    <input type="submit" value="read">
+    <input type="submit" value="readAll">
 </form>
 <form action="/readBySearch" method="get">
     <input type="submit" value="readBySearch">

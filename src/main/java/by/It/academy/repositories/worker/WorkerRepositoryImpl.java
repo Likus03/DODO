@@ -1,25 +1,18 @@
 package by.It.academy.repositories.worker;
 
-import by.It.academy.entities.User;
 import by.It.academy.entities.Worker;
 import by.It.academy.utils.JPAUtil;
-import org.hibernate.Session;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Root;
+
 import java.util.List;
 
 public class WorkerRepositoryImpl implements WorkerRepository {
     private static WorkerRepository workerRepository;
 
-    //    private static List<Worker> workers = new ArrayList<>();
     private WorkerRepositoryImpl() {
-        // workers.addAll(read());
     }
 
     public static WorkerRepository getInstance() {
@@ -29,25 +22,12 @@ public class WorkerRepositoryImpl implements WorkerRepository {
         return workerRepository;
     }
 
-//    @Override
-//    public void create(User user) {
-//        EntityManager entityManager = JPAUtil.getEntityManager();
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        transaction.begin();
-//
-//        entityManager.persist(user);
-//        transaction.commit();
-//    }
-
     @Override
-    public List<Worker> read() {
+    public List<Worker> readAll() {
         EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-//        TypedQuery<Worker> query =
-//                entityManager.createQuery("SELECT c FROM Worker c", Worker.class);
-//        List<Worker> workers = query.getResultList();
-//
+
         List<Worker> workers =
                 entityManager.createNamedQuery("Worker.allWorkers", Worker.class).getResultList();
 
@@ -81,13 +61,17 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
         Worker updateWorker = entityManager.find(Worker.class, worker.getIdWorker());
 
+        setUpdatingWorker(worker, updateWorker);
+
+        entityManager.persist(updateWorker);
+        transaction.commit();
+    }
+
+    private void setUpdatingWorker(Worker worker, Worker updateWorker) {
         updateWorker.setFirstname(worker.getFirstname());
         updateWorker.setSurname(worker.getSurname());
         updateWorker.setPhoneNumber(worker.getPhoneNumber());
         updateWorker.setWorkerType(worker.getWorkerType());
-
-        entityManager.persist(updateWorker);
-        transaction.commit();
     }
 
     @Override
@@ -101,7 +85,6 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
         transaction.commit();
     }
-
 
     @Override
     public Worker getById(long id) {
