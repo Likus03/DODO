@@ -16,7 +16,6 @@
 <table width="50%" border="1" rules="all">
     <thead>
     <tr>
-        <th>IdOrder</th>
         <th>DESCRIBE</th>
         <th>COST</th>
         <th>ADDRESS</th>
@@ -27,7 +26,6 @@
     <form method="post" action="/readOrders">
         <c:forEach var="orders" items="${orders}">
         <tr>
-            <td>${orders.idOrder}</td>
             <td>${orders.describe}</td>
             <td>${orders.cost}</td>
             <td>${orders.address}</td>
