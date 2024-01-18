@@ -4,7 +4,7 @@ import world.It.academy.entities.Worker;
 
 import java.util.List;
 
-public interface WorkerRepository{
+public interface WorkerRepository {
 
     List<Worker> readAll();
 
@@ -12,6 +12,11 @@ public interface WorkerRepository{
 
     void update(Worker worker);
 
+    void setUpdatingWorker(Worker worker, Worker updateWorker);
+
+    Worker findById(Long id);
+
     void delete(long id);
+
     Worker getById(long id);
 }

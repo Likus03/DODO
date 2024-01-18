@@ -2,19 +2,21 @@ package world.It.academy.repositories.user;
 
 import world.It.academy.entities.User;
 import world.It.academy.utils.JPAUtil;
+import world.It.academy.utils.PasswordHashing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
     private static UserRepository userRepository;
-
-    //    private static List<Worker> workers = new ArrayList<>();
+    EntityManager entityManager = JPAUtil.getEntityManager();
     private UserRepositoryImpl() {
-        // workers.addAll(read());
     }
 
     public static UserRepository getInstance() {
@@ -26,23 +28,23 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> read() {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-//        TypedQuery<Worker> query =
-//                entityManager.createQuery("SELECT c FROM Worker c", Worker.class);
-//        List<Worker> workers = query.getResultList();
-//
-        List<User> users =
-                entityManager.createNamedQuery("User.allUsers", User.class).getResultList();
 
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+
+        Root<User> orderRoot = criteriaQuery.from(User.class);
+
+        criteriaQuery.select(orderRoot);
+
+        List<User> users = entityManager.createQuery(criteriaQuery).getResultList();
         transaction.commit();
 
         return users;
     }
     @Override
     public void create(User user) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
@@ -51,7 +53,6 @@ public class UserRepositoryImpl implements UserRepository {
     }
     @Override
     public void update(User user) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
@@ -61,7 +62,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void delete(long id) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
@@ -72,25 +72,35 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User getLoggedUser(String login, String password) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
+    public User getLoggedUser(String login, String password) throws NoResultException{
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        TypedQuery<User> query = entityManager.createQuery(
-                "SELECT e FROM User e WHERE e.login = :login AND e.password = :password", User.class);
-        query.setParameter("login", login);
-        query.setParameter("password", password);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
 
-        User user = null;
+        Root<User> orderRoot = criteriaQuery.from(User.class);
+
+        Predicate condition = criteriaBuilder.equal(orderRoot.get("login"), login);
+
+        criteriaQuery.select(orderRoot)
+                .where(condition);
+
+        transaction.commit();
+        User user;
+
         try {
-            user = query.getSingleResult();
+            user = entityManager.createQuery(criteriaQuery).getSingleResult();
         }
         catch (NoResultException ex){
-            ex.printStackTrace();
+            user = null;
+            System.out.println("No results found.");
         }
-        transaction.commit();
 
-        return user;
+        if (user != null && PasswordHashing.checkPassword(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
 }

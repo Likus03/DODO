@@ -18,7 +18,6 @@ import static javax.persistence.EnumType.STRING;
 @AllArgsConstructor
 @Entity
 @Table(name = "WORKERS")
-@NamedQuery(name = "Worker.allWorkers", query = "select w from Worker w")
 public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +36,9 @@ public class Worker {
     @Column(name = "WORKERTYPE")
     @Enumerated(STRING)
     private WorkerType workerType;
+
+    @OneToOne(mappedBy = "worker", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private User user;
 
     @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL)
     private List<Order> orders;

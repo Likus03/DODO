@@ -11,7 +11,4 @@ public interface OrderService {
     void takeOrder(Long idOrder, Long idWorker);
     List<Order> readAll();
     void create(Order order);
-    List<Order> update(Order order);
-    void delete(long id);
-    Order getById(long id);
 }

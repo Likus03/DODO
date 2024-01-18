@@ -13,12 +13,7 @@ public interface OrderRepository {
 
     void create(Order order);
 
-    List<Order> update(Order order);
-
-    void delete(long id);
-    Order getById(long id);
-
-    void takeOrder(Long id, Long idWorker);
+    void takeOrder(Long idOrder, Long idWorker);
 
     void completeOrder(Order order);
 }

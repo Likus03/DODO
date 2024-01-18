@@ -5,7 +5,7 @@ INSERT INTO WORKERS (firstname, surname, phonenumber, workertype) VALUES ('Alex'
 INSERT INTO WORKERS (firstname, surname, phonenumber, workertype) VALUES ('Rick', 'Gan', '80443971123', 'KITCHEN_WORKER');
 INSERT INTO WORKERS (firstname, surname, phonenumber, workertype) VALUES ('Jake', 'Zek', '80443171123', 'COURIER');
 
-INSERT INTO USERS (login, password, worker_ID) VALUES ('admin', 'admin', 1);
+INSERT INTO USERS (login, password, worker_ID) VALUES ('admin', '$2a$10$Xj1LX.Nh1NiN58lL/Oc0tesb1c9f2P1gp8Qn9wLKA4Fl//TTw7VpW', 1);
 INSERT INTO USERS (login, password, worker_ID) VALUES ('33', '33', 2);
 INSERT INTO USERS (login, password, worker_ID) VALUES ('1', '1', 3);
 INSERT INTO USERS (login, password, worker_ID) VALUES ('11', '11', 4);

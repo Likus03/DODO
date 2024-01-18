@@ -13,9 +13,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "USERS")
-@NamedQuery(name = "User.allUsers", query = "select w from User w")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long idUser;
 
@@ -25,8 +25,8 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @MapsId
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "worker_id")
     private Worker worker;
 
     public User(String login, String password, Worker worker) {

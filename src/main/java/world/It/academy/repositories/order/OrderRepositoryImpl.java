@@ -88,47 +88,17 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public List<Order> update(Order order) {
-//        return orders.stream()
-//                .map(e -> Objects.equals(e.getId(), order.getId()) ? order : e)
-//                .collect(Collectors.toList());
-        return null;
-    }
-
-    @Override
-    public void delete(long id) {
-//        orders.removeIf(order -> order.getId() == id);
-    }
-
-    @Override
-    public Order getById(long id) {
-        return null;
-//        return orders.stream()
-//                .filter(order -> order.getId() == id)
-//                .findFirst()
-//                .orElse(null);
-    }
-
-    @Override
-    public void takeOrder(Long id, Long idWorker){
+    public void takeOrder(Long idOrder, Long idWorker){
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        Order order = entityManager.find(Order.class, id);
+        Order order = entityManager.find(Order.class, idOrder);
         Worker worker = entityManager.find(Worker.class, idWorker);
         order.setWorker(worker);
 
         entityManager.persist(order);
         transaction.commit();
     }
-
-//    private void setUpdatingOrder(Order order, Order updateOrder){
-//        updateOrder.setCompleted(order.getCompleted());
-//        updateOrder.setCost(order.getCost());
-//        updateOrder.setAddress(order.getAddress());
-//        updateOrder.setDescribe(order.getDescribe());
-//        updateOrder.setDeliveryTime(order.getDeliveryTime());
-//    }
     @Override
     public void completeOrder(Order order) {
         order.setCompleted(true);

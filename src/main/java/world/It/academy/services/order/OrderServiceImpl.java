@@ -34,20 +34,6 @@ public class OrderServiceImpl implements OrderService{
         orderRepository.create(order);
     }
 
-    @Override
-    public List<Order> update(Order order) {
-        return orderRepository.update(order);
-    }
-
-    @Override
-    public void delete(long id) {
-        orderRepository.delete(id);
-    }
-
-    @Override
-    public Order getById(long id) {
-        return orderRepository.getById(id);
-    }
 
     public static OrderService getInstance(){
 

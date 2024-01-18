@@ -1,5 +1,6 @@
 package world.It.academy.controllers;
 
+import org.mindrot.jbcrypt.BCrypt;
 import world.It.academy.entities.User;
 import world.It.academy.WorkerType;
 import world.It.academy.services.user.UserService;

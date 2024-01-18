@@ -30,11 +30,6 @@ public class WorkerServiceImpl implements WorkerService {
         return workerRepository.readBySearch(parameter);
     }
 
-//    @Override
-//    public void create(User user) {
-//        workerRepository.create(user);
-//    }
-
     @Override
     public void update(Worker worker) {
         workerRepository.update(worker);
@@ -49,6 +44,7 @@ public class WorkerServiceImpl implements WorkerService {
     public Worker getById(long id) {
         return workerRepository.getById(id);
     }
+
 
 
 }

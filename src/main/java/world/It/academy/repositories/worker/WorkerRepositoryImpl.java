@@ -5,12 +5,13 @@ import world.It.academy.utils.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 
 import java.util.List;
 
 public class WorkerRepositoryImpl implements WorkerRepository {
     private static WorkerRepository workerRepository;
+    EntityManager entityManager = JPAUtil.getEntityManager();
 
     private WorkerRepositoryImpl() {
     }
@@ -24,30 +25,48 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public List<Worker> readAll() {
-        EntityManager entityManager = JPAUtil.getEntityManager();
+
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        List<Worker> workers =
-                entityManager.createNamedQuery("Worker.allWorkers", Worker.class).getResultList();
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Worker> criteriaQuery = criteriaBuilder.createQuery(Worker.class);
 
+        Root<Worker> workerRoot = criteriaQuery.from(Worker.class);
+
+        criteriaQuery.select(workerRoot);
+
+        List<Worker> workers = entityManager.createQuery(criteriaQuery).getResultList();
         transaction.commit();
 
         return workers;
     }
 
     @Override
-    public List<Worker> readBySearch(String parameter) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
+    public List<Worker> readBySearch(String parameter) throws NullPointerException {
+        if (parameter == null) {
+            return null;
+        }
+
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        TypedQuery<Worker> query =
-                entityManager.createQuery("select w from Worker w where " +
-                        "concat(w.firstname, w.surname, w.phoneNumber, w.workerType) like :parameter", Worker.class);
-        query.setParameter("parameter", "%" + parameter + "%");
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Worker> criteriaQuery = criteriaBuilder.createQuery(Worker.class);
 
-        List<Worker> workers = query.getResultList();
+        Root<Worker> workerRoot = criteriaQuery.from(Worker.class);
+
+        Expression<String> expression1 = criteriaBuilder.concat(workerRoot.get("firstname"), workerRoot.get("surname"));
+        Expression<String> expression2 = criteriaBuilder.concat(workerRoot.get("phoneNumber"), workerRoot.get("workerType"));
+        Expression<String> expressionAll = criteriaBuilder.concat(expression1, expression2);
+
+        Predicate predicate = criteriaBuilder.like(criteriaBuilder.upper(expressionAll), "%" + parameter.toUpperCase() + "%");
+
+        criteriaQuery.select(workerRoot)
+                .where(predicate);
+
+        List<Worker> workers = entityManager.createQuery(criteriaQuery).getResultList();
+
         transaction.commit();
 
         return workers;
@@ -55,28 +74,39 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public void update(Worker worker) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
 
-        Worker updateWorker = entityManager.find(Worker.class, worker.getIdWorker());
+        Worker updateWorker = findById(worker.getIdWorker());
 
         setUpdatingWorker(worker, updateWorker);
 
+        transaction.begin();
         entityManager.persist(updateWorker);
         transaction.commit();
     }
 
-    private void setUpdatingWorker(Worker worker, Worker updateWorker) {
+    @Override
+    public void setUpdatingWorker(Worker worker, Worker updateWorker) {
         updateWorker.setFirstname(worker.getFirstname());
         updateWorker.setSurname(worker.getSurname());
         updateWorker.setPhoneNumber(worker.getPhoneNumber());
         updateWorker.setWorkerType(worker.getWorkerType());
     }
+    @Override
+    public Worker findById(Long id) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        Worker worker = entityManager.find(Worker.class, id);
+
+        transaction.commit();
+
+        return worker;
+    }
+
 
     @Override
     public void delete(long id) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
@@ -88,7 +118,6 @@ public class WorkerRepositoryImpl implements WorkerRepository {
 
     @Override
     public Worker getById(long id) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 

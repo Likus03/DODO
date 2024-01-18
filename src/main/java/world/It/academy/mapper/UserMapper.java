@@ -3,6 +3,7 @@ package world.It.academy.mapper;
 import world.It.academy.entities.User;
 import world.It.academy.entities.Worker;
 import world.It.academy.utils.Constants;
+import world.It.academy.utils.PasswordHashing;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +22,7 @@ public class UserMapper {
     public User buildWorker(HttpServletRequest request, Worker worker) {
         return User.builder()
                 .login(request.getParameter(Constants.LOGIN))
-                .password(request.getParameter(Constants.PASSWORD))
+                .password(PasswordHashing.hash(request.getParameter(Constants.PASSWORD)))
                 .worker(worker)
                 .build();
     }
