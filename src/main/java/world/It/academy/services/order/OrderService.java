@@ -6,9 +6,11 @@ import java.util.List;
 
 
 public interface OrderService {
-    List<Order> readNotCompleted();
-    List<Order> readCompleted(Long id);
+    List<Order> readAvailableOrder();
+    List<Order> readCompletedOrNot(Long id, boolean completed);
     void takeOrder(Long idOrder, Long idWorker);
-    List<Order> readAll();
+//    List<Order> readAll();
     void create(Order order);
+
+    void completeOrder(Long id);
 }

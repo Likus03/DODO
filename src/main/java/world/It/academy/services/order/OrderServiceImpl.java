@@ -15,19 +15,21 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<Order> readNotCompleted() {
-        return orderRepository.readNotCompleted();
+    public List<Order> readAvailableOrder() {
+        return orderRepository.readAvailableOrder();
     }
     @Override
-    public List<Order> readCompleted(Long id){return orderRepository.readCompleted(id);}
+    public List<Order> readCompletedOrNot(Long id, boolean completed){
+        return orderRepository.readCompletedOrNot(id, completed);
+    }
 
     @Override
     public void takeOrder(Long idOrder, Long idWorker) {
         orderRepository.takeOrder(idOrder, idWorker);
     }
 
-    @Override
-    public List<Order> readAll(){return orderRepository.readAll();}
+//    @Override
+//    public List<Order> readAll(){return orderRepository.readAll();}
 
     @Override
     public void create(Order order) {
@@ -41,5 +43,11 @@ public class OrderServiceImpl implements OrderService{
             orderService = new OrderServiceImpl();
         }
         return orderService;
+    }
+
+    @Override
+    public void completeOrder(Long id){
+        Order order = orderRepository.findById(id);
+        orderRepository.completeOrder(order);
     }
 }

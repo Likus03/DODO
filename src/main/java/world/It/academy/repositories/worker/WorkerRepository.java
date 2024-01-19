@@ -10,7 +10,7 @@ public interface WorkerRepository {
 
     List<Worker> readBySearch(String parameter);
 
-    void update(Worker worker);
+    void update(Worker worker, Worker updateWorker);
 
     void setUpdatingWorker(Worker worker, Worker updateWorker);
 

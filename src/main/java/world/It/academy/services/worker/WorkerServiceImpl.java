@@ -31,8 +31,9 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public void update(Worker worker) {
-        workerRepository.update(worker);
+    public void update(Worker newWorker) {
+        Worker oldWorker = workerRepository.findById(newWorker.getIdWorker());
+        workerRepository.update(newWorker, oldWorker);
     }
 
     @Override

@@ -19,7 +19,7 @@ public class ReadCompletedOrdersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Order> orders = orderService.readCompleted((Long) req.getSession().getAttribute("worker_id"));
+        List<Order> orders = orderService.readCompletedOrNot((Long) req.getSession().getAttribute("worker_id"), true);
 
         req.setAttribute("orders", orders);
         req.getRequestDispatcher(Constants.READ_COMPLETED_COURIERS_ORDERS_PAGE).forward(req, resp);

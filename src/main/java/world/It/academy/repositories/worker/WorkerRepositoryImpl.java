@@ -73,24 +73,22 @@ public class WorkerRepositoryImpl implements WorkerRepository {
     }
 
     @Override
-    public void update(Worker worker) {
+    public void update(Worker newWorker, Worker oldWorker) {
         EntityTransaction transaction = entityManager.getTransaction();
 
-        Worker updateWorker = findById(worker.getIdWorker());
-
-        setUpdatingWorker(worker, updateWorker);
+        setUpdatingWorker(newWorker, oldWorker);
 
         transaction.begin();
-        entityManager.persist(updateWorker);
+        entityManager.persist(oldWorker);
         transaction.commit();
     }
 
     @Override
-    public void setUpdatingWorker(Worker worker, Worker updateWorker) {
-        updateWorker.setFirstname(worker.getFirstname());
-        updateWorker.setSurname(worker.getSurname());
-        updateWorker.setPhoneNumber(worker.getPhoneNumber());
-        updateWorker.setWorkerType(worker.getWorkerType());
+    public void setUpdatingWorker(Worker newWorker, Worker oldWorker) {
+        oldWorker.setFirstname(newWorker.getFirstname());
+        oldWorker.setSurname(newWorker.getSurname());
+        oldWorker.setPhoneNumber(newWorker.getPhoneNumber());
+        oldWorker.setWorkerType(newWorker.getWorkerType());
     }
     @Override
     public Worker findById(Long id) {

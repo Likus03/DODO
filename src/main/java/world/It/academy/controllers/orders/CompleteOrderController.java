@@ -13,22 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/takeOrder")
-public class TakeOrderController extends HttpServlet {
-    private final OrderService orderService = OrderServiceImpl.getInstance();
+import static world.It.academy.utils.Constants.*;
 
+@WebServlet(urlPatterns = "/completeOrder")
+public class CompleteOrderController extends HttpServlet {
+    private final OrderService orderService = OrderServiceImpl.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Order> orders = orderService.readAvailableOrder();
+        List<Order> orders = orderService
+                .readCompletedOrNot((Long) req.getSession().getAttribute("worker_id"), false);
         req.setAttribute("orders", orders);
-        req.getRequestDispatcher(Constants.TAKE_ORDER_PAGE).forward(req, resp);
+        req.getRequestDispatcher(COMPLETE_ORDER).forward(req, resp);
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long idOrder = Long.valueOf(req.getParameter("id"));
-        Long idWorker = (Long) req.getSession().getAttribute("worker_id");
-        orderService.takeOrder(idOrder, idWorker);
-
+        orderService.completeOrder(Long.valueOf(req.getParameter("id")));
         doGet(req, resp);
     }
 }

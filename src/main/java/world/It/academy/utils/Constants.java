@@ -32,4 +32,6 @@ public class Constants {
     public static final String MAIN_PAGE = "/index.html";
     public static final String WORKER_TYPE = "workerType";
     public static final String READ_BY_SEARCH = "/pages/admin/readBySearch.jsp";
+
+    public static final String COMPLETE_ORDER = "/pages/orders/completeOrder.jsp";
 }
