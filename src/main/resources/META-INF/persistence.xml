@@ -7,6 +7,7 @@
         <class>world.It.academy.entities.Worker</class>
         <class>world.It.academy.entities.User</class>
         <class>world.It.academy.entities.Order</class>
+        <class>world.It.academy.entities.WorkSchedule</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="none"/>

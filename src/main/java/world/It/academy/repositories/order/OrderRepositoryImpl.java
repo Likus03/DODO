@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.*;
 import java.util.List;
+import java.util.Optional;
 
 public class OrderRepositoryImpl implements OrderRepository {
     private static OrderRepository orderRepository;
@@ -42,7 +43,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         criteriaQuery.select(root)
                 .where(builder.and
                 (builder.equal(root.get("completed"), false),
-                        builder.isNull(root.get("worker").get("idWorker"))));
+                        builder.isNull(root.get("worker").get("id"))));
 
         List<Order> orders;
         try {
@@ -67,57 +68,25 @@ public class OrderRepositoryImpl implements OrderRepository {
         Root<Order> orderRoot = criteriaQuery.from(Order.class);
 
         Predicate condition = criteriaBuilder.and
-                (criteriaBuilder.equal(orderRoot.get("worker").get("idWorker"), id),
+                (criteriaBuilder.equal(orderRoot.get("worker").get("id"), id),
                 criteriaBuilder.equal(orderRoot.get("completed"), completed));
 
         criteriaQuery.select(orderRoot)
                 .where(condition);
 
-        List<Order> orders = entityManager.createQuery(criteriaQuery).getResultList();
-
+        List<Order> orders;
+        try {
+            orders = entityManager.createQuery(criteriaQuery).getResultList();
+        }
+        catch (NullPointerException ex){
+            orders = null;
+            System.out.println("No results found.");
+        }
         transaction.commit();
+
+
         return orders;
     }
-
-//    @Override
-//    public List<Order> readNotCompletedOrder(Long id){
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        transaction.begin();
-//
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Order> criteriaQuery = criteriaBuilder.createQuery(Order.class);
-//
-//        Root<Order> orderRoot = criteriaQuery.from(Order.class);
-//
-//        Predicate condition = criteriaBuilder.and
-//                (criteriaBuilder.equal(orderRoot.get("worker").get("idWorker"), id),
-//                        criteriaBuilder.equal(orderRoot.get("completed"), false));
-//
-//        criteriaQuery.select(orderRoot)
-//                .where(condition);
-//
-//        List<Order> orders = entityManager.createQuery(criteriaQuery).getResultList();
-//
-//        transaction.commit();
-//        return orders;
-//    }
-
-//    @Override
-//    public List<Order> readAll() {
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        transaction.begin();
-//
-//        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Order> criteriaQuery = builder.createQuery(Order.class);
-//
-//        criteriaQuery.select(criteriaQuery.from(Order.class));
-//
-//        TypedQuery<Order> query = entityManager.createQuery(criteriaQuery);
-//        List<Order> orders = query.getResultList();
-//
-//        transaction.commit();
-//        return orders;
-//    }
 
     @Override
     public void takeOrder(Long idOrder, Long idWorker){
@@ -143,7 +112,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Optional<Order> findById(Long id) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
@@ -151,6 +120,6 @@ public class OrderRepositoryImpl implements OrderRepository {
 
         transaction.commit();
 
-        return order;
+        return Optional.ofNullable(order);
     }
 }

@@ -6,7 +6,7 @@ import world.It.academy.repositories.order.OrderRepositoryImpl;
 
 import java.util.List;
 
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository = OrderRepositoryImpl.getInstance();
 
     private static OrderService orderService;
@@ -18,8 +18,9 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> readAvailableOrder() {
         return orderRepository.readAvailableOrder();
     }
+
     @Override
-    public List<Order> readCompletedOrNot(Long id, boolean completed){
+    public List<Order> readCompletedOrNot(Long id, boolean completed) {
         return orderRepository.readCompletedOrNot(id, completed);
     }
 
@@ -28,26 +29,24 @@ public class OrderServiceImpl implements OrderService{
         orderRepository.takeOrder(idOrder, idWorker);
     }
 
-//    @Override
-//    public List<Order> readAll(){return orderRepository.readAll();}
-
     @Override
     public void create(Order order) {
         orderRepository.create(order);
     }
 
 
-    public static OrderService getInstance(){
+    public static OrderService getInstance() {
 
-        if(orderService == null){
+        if (orderService == null) {
             orderService = new OrderServiceImpl();
         }
         return orderService;
     }
 
     @Override
-    public void completeOrder(Long id){
-        Order order = orderRepository.findById(id);
-        orderRepository.completeOrder(order);
+    public void completeOrder(Long id) {
+        orderRepository.findById(id)
+                .ifPresentOrElse(orderRepository::completeOrder,
+                        () -> System.out.println("Order not found."));
     }
 }

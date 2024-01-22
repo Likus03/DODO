@@ -31,7 +31,7 @@ public class UpdateWorkersController extends HttpServlet {
         Long id = Long.valueOf(req.getParameter("id"));
 
         Worker worker = workerMapper.buildWorker(req);
-        worker.setIdWorker(id);
+        worker.setId(id);
         workerService.update(worker);
         doGet(req, resp);
     }

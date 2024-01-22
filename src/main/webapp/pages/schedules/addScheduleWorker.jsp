@@ -8,7 +8,6 @@
 <table width="50%" border="1" rules="all">
     <thead>
     <tr>
-<%--        TODO:набросок Worker--%>
         <th>Monday</th>
         <th>Tuesday</th>
         <th>Wednesday</th>

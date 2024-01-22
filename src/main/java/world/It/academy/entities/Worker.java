@@ -22,7 +22,7 @@ public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Long idWorker;
+    private Long id;
 
     @Column(name = "FIRSTNAME")
     private String firstname;
@@ -42,6 +42,9 @@ public class Worker {
 
     @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL)
     private List<Order> orders;
+
+    @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<WorkSchedule> workSchedules;
 
     public Worker(String firstname, String surname, String phoneNumber, WorkerType workerType, List<Order> orders) {
         this.firstname = firstname;

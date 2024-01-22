@@ -12,6 +12,9 @@ public class Constants {
     public static final String WORKERS = "workers";
     public static final String ID_USER = "idUser";
     public static final String INPUT_SEARCH = "inputSearch";
+    public static final String DATE_WORK = "dateWork";
+    public static final String START_TIME = "startTime";
+    public static final String END_TIME = "endTime";
 
 
     public static final String ID_WORKER = "idWorker";
@@ -32,6 +35,8 @@ public class Constants {
     public static final String MAIN_PAGE = "/index.html";
     public static final String WORKER_TYPE = "workerType";
     public static final String READ_BY_SEARCH = "/pages/admin/readBySearch.jsp";
+
+    public static final String READ_SCHEDULE_WORKER = "/pages/schedules/readScheduleWorker.jsp";
 
     public static final String COMPLETE_ORDER = "/pages/orders/completeOrder.jsp";
 }

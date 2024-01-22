@@ -3,13 +3,12 @@ package world.It.academy.repositories.order;
 import world.It.academy.entities.Order;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository {
     List<Order> readAvailableOrder();
 
     List<Order> readCompletedOrNot(Long id, boolean completed);
-
-//    List<Order> readAll();
 
     void create(Order order);
 
@@ -17,5 +16,5 @@ public interface OrderRepository {
 
     void completeOrder(Order order);
 
-    Order findById(Long id);
+    Optional<Order> findById(Long id);
 }

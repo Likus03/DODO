@@ -32,7 +32,7 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     public void update(Worker newWorker) {
-        Worker oldWorker = workerRepository.findById(newWorker.getIdWorker());
+        Worker oldWorker = workerRepository.findById(newWorker.getId());
         workerRepository.update(newWorker, oldWorker);
     }
 

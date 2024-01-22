@@ -1,7 +1,7 @@
 package world.It.academy.mapper;
 
 import world.It.academy.entities.Order;
-import world.It.academy.utils.Constants;
+import static world.It.academy.utils.Constants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -20,10 +20,10 @@ public class OrderMapper {
 
     public Order buildOrder(HttpServletRequest request){
         return Order.builder()
-                .describe(request.getParameter(Constants.DESCRIBE))
-                .cost(Float.parseFloat(request.getParameter(Constants.COST)))
-                .address(request.getParameter(Constants.ADDRESS))
-                .deliveryTime(LocalDateTime.parse(request.getParameter(Constants.DELIVERY_TIME)))
+                .describe(request.getParameter(DESCRIBE))
+                .cost(Float.parseFloat(request.getParameter(COST)))
+                .address(request.getParameter(ADDRESS))
+                .deliveryTime(LocalDateTime.parse(request.getParameter(DELIVERY_TIME)))
                 .completed(false)
                 .build();
     }
