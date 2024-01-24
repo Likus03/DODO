@@ -7,7 +7,7 @@ import world.It.academy.repositories.worker.WorkerRepositoryImpl;
 import java.util.List;
 
 public class WorkerServiceImpl implements WorkerService {
-    private final WorkerRepository workerRepository = WorkerRepositoryImpl.getInstance();
+    private static final WorkerRepository workerRepository = WorkerRepositoryImpl.getInstance();
     private static WorkerService workerService;
 
     private WorkerServiceImpl() {

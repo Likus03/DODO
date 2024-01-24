@@ -7,7 +7,7 @@ import world.It.academy.repositories.user.UserRepositoryImpl;
 import java.util.List;
 
 public class UserServiceImpl implements UserService{
-    private final UserRepository userRepository = UserRepositoryImpl.getInstance();
+    private static final UserRepository userRepository = UserRepositoryImpl.getInstance();
     private static UserService userService;
 
     private UserServiceImpl() {

@@ -19,11 +19,22 @@ INSERT INTO ORDERS(address, completed, cost, deliverytime, describe) VALUES ('Pu
 INSERT INTO ORDERS(address, completed, cost, deliverytime, describe) VALUES ('Volgagradskaya 97, 87', FALSE, 31.5, '2024-01-02 18:00', 'Chicken BBQ');
 INSERT INTO ORDERS(address, completed, cost, deliverytime, describe) VALUES ('Uruchskaya 77, 32', FALSE, 27.3, '2024-01-02 18:00', 'Carbonara');
 
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-15', '20:00:00','13:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-16', '20:00:00','10:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-17', '15:00:00','10:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-18', '22:00:00','15:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-19', '23:00:00','10:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-20', '23:00:00','08:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-21', '20:00:00','10:00:00', 5);
-INSERT INTO WORKSCHEDULE(datework, endtime, starttime, worker_id) VALUES ('2024-01-25', '20:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-15', '20:00:00','13:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-16', '20:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-17', '15:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-18', '22:00:00','15:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-19', '23:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-20', '23:00:00','08:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-21', '20:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-25', '20:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-22', '23:00:00','10:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, worker_id) VALUES ('2024-01-23', 5);
+INSERT INTO WORKSCHEDULES(datework, worker_id) VALUES ('2024-01-24', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-26', '21:00:00','13:00:00', 5);
+INSERT INTO WORKSCHEDULES(datework, worker_id) VALUES ('2024-01-27', 5);
+INSERT INTO WORKSCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-28', '16:00:00','8:00:00', 5);
+
+INSERT INTO TENTATIVESCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-15', '20:00:00','13:00:00', 5);
+INSERT INTO TENTATIVESCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-17', '15:00:00','10:00:00', 5);
+-- INSERT INTO TENTATIVESCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-26', '21:00:00','13:00:00', 5);
+-- INSERT INTO TENTATIVESCHEDULES(datework, endtime, starttime, worker_id) VALUES ('2024-01-28', '16:00:00','8:00:00', 5);

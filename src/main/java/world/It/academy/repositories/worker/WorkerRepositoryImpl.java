@@ -11,7 +11,7 @@ import java.util.List;
 
 public class WorkerRepositoryImpl implements WorkerRepository {
     private static WorkerRepository workerRepository;
-    EntityManager entityManager = JPAUtil.getEntityManager();
+    private static final EntityManager entityManager = JPAUtil.getEntityManager();
 
     private WorkerRepositoryImpl() {
     }

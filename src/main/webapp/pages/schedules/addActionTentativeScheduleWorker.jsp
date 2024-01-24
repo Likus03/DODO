@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -18,15 +18,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><button>Add workday</button></td>
-        <td><button>Add workday</button></td>
-        <td><button>Add workday</button></td>
-        <td><button>Add workday</button></td>
-        <td><button>Add workday</button></td>
-        <td><button>Add workday</button></td>
-        <td><button>Add workday</button></td>
-    </tr>
+    <form action="/addTentativeSchedule" method="post">
+        <c:forEach var="day" items="${weekList}">
+            <td><input type="submit" name="date" value="${day}"></td>
+        </c:forEach>
+    </form>
     </tbody>
 </table>
 </body>

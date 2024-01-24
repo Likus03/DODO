@@ -24,16 +24,16 @@ public class Worker {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "FIRSTNAME", nullable = false)
     private String firstname;
 
-    @Column(name = "SURNAME")
+    @Column(name = "SURNAME", nullable = false)
     private String surname;
 
-    @Column(name = "PHONENUMBER")
+    @Column(name = "PHONENUMBER", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "WORKERTYPE")
+    @Column(name = "WORKERTYPE", nullable = false)
     @Enumerated(STRING)
     private WorkerType workerType;
 

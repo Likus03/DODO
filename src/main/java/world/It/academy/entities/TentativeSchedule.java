@@ -15,8 +15,8 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "WorkSchedules")
-public class WorkSchedule {
+@Table(name = "TentativeSchedules", uniqueConstraints = @UniqueConstraint(columnNames = {"dateWork", "worker_id"}))
+public class TentativeSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -34,4 +34,9 @@ public class WorkSchedule {
     @ManyToOne
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
+
+    public TentativeSchedule(LocalDate dateWork, Worker worker) {
+        this.dateWork = dateWork;
+        this.worker = worker;
+    }
 }

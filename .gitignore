@@ -13,6 +13,7 @@ target/
 *.ipr
 pom.xml
 .idea/codeStyles/codeStyleConfig.xml
+.idea/src/resources/log4j.properties
 
 ### Eclipse ###
 .apt_generated

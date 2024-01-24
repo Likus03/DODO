@@ -19,14 +19,14 @@ public class User {
     @Column(name = "ID")
     private Long idUser;
 
-    @Column(name = "LOGIN")
+    @Column(name = "LOGIN", nullable = false)
     private String login;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "worker_id")
+    @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
 
     public User(String login, String password, Worker worker) {
@@ -34,5 +34,4 @@ public class User {
         this.password = password;
         this.worker = worker;
     }
-
 }

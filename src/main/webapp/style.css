@@ -6,9 +6,9 @@ html, body
 
 body
 {
-    font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;    
+    font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;
     margin: 0;
-    background: url(images/bg.png) repeat; 
+    background: url(images/bg.png) repeat;
 }
 
 /*--------------------*/
@@ -21,7 +21,7 @@ body
     background-image: -moz-linear-gradient(top, #fff, #eee);
     background-image: -ms-linear-gradient(top, #fff, #eee);
     background-image: -o-linear-gradient(top, #fff, #eee);
-    background-image: linear-gradient(top, #fff, #eee);  
+    background-image: linear-gradient(top, #fff, #eee);
     height: 240px;
     width: 400px;
     margin: -150px 0 0 -230px;
@@ -32,28 +32,28 @@ body
     z-index: 0;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    border-radius: 3px;  
+    border-radius: 3px;
     -webkit-box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),
-          0 1px 1px rgba(0, 0, 0, .2),
-          0 3px 0 #fff,
-          0 4px 0 rgba(0, 0, 0, .2),
-          0 6px 0 #fff,  
-          0 7px 0 rgba(0, 0, 0, .2);
+            0 0 2px rgba(0, 0, 0, 0.2),
+            0 1px 1px rgba(0, 0, 0, .2),
+            0 3px 0 #fff,
+            0 4px 0 rgba(0, 0, 0, .2),
+            0 6px 0 #fff,
+            0 7px 0 rgba(0, 0, 0, .2);
     -moz-box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),  
-          1px 1px   0 rgba(0,   0,   0,   .1),
-          3px 3px   0 rgba(255, 255, 255, 1),
-          4px 4px   0 rgba(0,   0,   0,   .1),
-          6px 6px   0 rgba(255, 255, 255, 1),  
-          7px 7px   0 rgba(0,   0,   0,   .1);
+            0 0 2px rgba(0, 0, 0, 0.2),
+            1px 1px   0 rgba(0,   0,   0,   .1),
+            3px 3px   0 rgba(255, 255, 255, 1),
+            4px 4px   0 rgba(0,   0,   0,   .1),
+            6px 6px   0 rgba(255, 255, 255, 1),
+            7px 7px   0 rgba(0,   0,   0,   .1);
     box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),  
-          0 1px 1px rgba(0, 0, 0, .2),
-          0 3px 0 #fff,
-          0 4px 0 rgba(0, 0, 0, .2),
-          0 6px 0 #fff,  
-          0 7px 0 rgba(0, 0, 0, .2);
+            0 0 2px rgba(0, 0, 0, 0.2),
+            0 1px 1px rgba(0, 0, 0, .2),
+            0 3px 0 #fff,
+            0 4px 0 rgba(0, 0, 0, .2),
+            0 6px 0 #fff,
+            0 7px 0 rgba(0, 0, 0, .2);
 }
 
 #login:before
@@ -140,7 +140,7 @@ fieldset
 }
 
 #submit
-{		
+{
     background-color: #ffb94b;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#fddb6f), to(#ffb94b));
     background-image: -webkit-linear-gradient(top, #fddb6f, #ffb94b);
@@ -148,17 +148,17 @@ fieldset
     background-image: -ms-linear-gradient(top, #fddb6f, #ffb94b);
     background-image: -o-linear-gradient(top, #fddb6f, #ffb94b);
     background-image: linear-gradient(top, #fddb6f, #ffb94b);
-    
+
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    
+
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-    
-     -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
-    
+
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+
     border-width: 1px;
     border-style: solid;
     border-color: #d69e31 #e3a037 #d5982d #e3a037;
@@ -173,7 +173,7 @@ fieldset
 }
 
 #submit:hover,#submit:focus
-{		
+{
     background-color: #fddb6f;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#ffb94b), to(#fddb6f));
     background-image: -webkit-linear-gradient(top, #ffb94b, #fddb6f);
@@ -181,25 +181,25 @@ fieldset
     background-image: -ms-linear-gradient(top, #ffb94b, #fddb6f);
     background-image: -o-linear-gradient(top, #ffb94b, #fddb6f);
     background-image: linear-gradient(top, #ffb94b, #fddb6f);
-}	
+}
 
 #submit:active
-{		
+{
     outline: none;
-   
-     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
+
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
 }
 
 #submit::-moz-focus-inner
 {
-  border: none;
+    border: none;
 }
 
 #actions a
 {
-    color: #3151A2;    
+    color: #3151A2;
     float: right;
     line-height: 35px;
     margin-left: 10px;
@@ -218,40 +218,40 @@ fieldset
 
 /* ����� ���� vladmaxi, ����� ������� */
 .vladmaxi-top{
-	line-height: 24px;
-	font-size: 11px;
-	background: rgba(0, 0, 0, 0.08);
-	text-transform: uppercase;
-	z-index: 9999;
-	position: fixed;
-	top:0;
-	left:0;
-	width:100%;
-	font-family: calibri;
-	font-size: 13px;
-	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
-	-webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+    line-height: 24px;
+    font-size: 11px;
+    background: rgba(0, 0, 0, 0.08);
+    text-transform: uppercase;
+    z-index: 9999;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    font-family: calibri;
+    font-size: 13px;
+    box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+    -webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
 }
 @-webkit-keyframes slideOut{
-	0%{top:-30px; opacity: 0;}
-	100%{top:0px; opacity: 1;}
+    0%{top:-30px; opacity: 0;}
+    100%{top:0px; opacity: 1;}
 }
 
 .vladmaxi-top a{
-	padding: 0px 10px;
-	letter-spacing: 1px;
-	color: #333;
-	text-shadow: 0px 1px 1px #fff;
-	display: block;
-	float: left;
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    color: #333;
+    text-shadow: 0px 1px 1px #fff;
+    display: block;
+    float: left;
 }
 .vladmaxi-top a:hover{
-	background: #fff;
+    background: #fff;
 }
 .vladmaxi-top span.right{
-	float: right;
+    float: right;
 }
 .vladmaxi-top span.right a{
-	float: left;
-	display: block;
+    float: left;
+    display: block;
 }

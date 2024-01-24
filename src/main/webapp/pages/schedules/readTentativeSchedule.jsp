@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>Schedule Worker</title>
+    <title>Tentative schedule</title>
     <style>
         .day-cell {
             width: 170px;
@@ -13,10 +13,9 @@
     </style>
 </head>
 <body>
-<form action="/readSchedule" method="post">
+<form action="/readTentativeSchedule" method="post">
     <input type="date" name="calendar">
     <input type="submit" name="inputSearch">
-</form>
 <table width="50%" border="1" rules="all">
     <thead>
     <tr>
@@ -30,16 +29,16 @@
     </tr>
     </thead>
     <tbody class="day-cell">
-    <c:forEach var="schedules" items="${schedules}">
+    <c:forEach var="tentativeSchedules" items="${tentativeSchedules}">
         <c:choose>
-            <c:when test="${empty schedules.startTime}">
-                <td>${schedules.dateWork}<br><br>
+            <c:when test="${empty tentativeSchedules.startTime}">
+                <td>${tentativeSchedules.dateWork}<br><br>
                     day-off
                 </td>
             </c:when>
-            <c:when test="${not empty schedules.startTime}">
-                <td style="font-weight: bold">${schedules.dateWork}<br><br>
-                        ${fn:substring(schedules.startTime, 0, 5)}-${fn:substring(schedules.endTime, 0, 5)}</td>
+            <c:when test="${not empty tentativeSchedules.startTime}">
+                <td style="font-weight: bold">${tentativeSchedules.dateWork}<br><br>
+                        ${fn:substring(tentativeSchedules.startTime, 0, 5)}-${fn:substring(tentativeSchedules.endTime, 0, 5)}</td>
             </c:when>
         </c:choose>
     </c:forEach>

@@ -1,6 +1,5 @@
 package world.It.academy.controllers;
 
-import org.mindrot.jbcrypt.BCrypt;
 import world.It.academy.entities.User;
 import world.It.academy.WorkerType;
 import world.It.academy.services.user.UserService;
@@ -39,7 +38,7 @@ public class AuthorizationController extends HttpServlet {
             case ADMIN -> req.getRequestDispatcher(ADMIN_PAGE).forward(req, resp);
             case COURIER -> req.getRequestDispatcher(COURIERS_PAGE).forward(req, resp);
             case MANAGER -> {}
-            case KITCHEN_WORKER -> req.getRequestDispatcher("/readSchedule").forward(req, resp);
+            case KITCHEN_WORKER -> req.getRequestDispatcher(WORKERS_PAGE).forward(req, resp);
             default -> req.getRequestDispatcher(ERROR_LOGIN).forward(req, resp);
         }
     }

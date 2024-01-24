@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
     private static UserRepository userRepository;
-    EntityManager entityManager = JPAUtil.getEntityManager();
+    private static final EntityManager entityManager = JPAUtil.getEntityManager();
     private UserRepositoryImpl() {
     }
 

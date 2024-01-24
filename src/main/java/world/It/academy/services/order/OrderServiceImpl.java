@@ -7,13 +7,19 @@ import world.It.academy.repositories.order.OrderRepositoryImpl;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
-    private final OrderRepository orderRepository = OrderRepositoryImpl.getInstance();
-
+    private static final OrderRepository orderRepository = OrderRepositoryImpl.getInstance();
     private static OrderService orderService;
 
     private OrderServiceImpl() {
     }
 
+    public static OrderService getInstance() {
+
+        if (orderService == null) {
+            orderService = new OrderServiceImpl();
+        }
+        return orderService;
+    }
     @Override
     public List<Order> readAvailableOrder() {
         return orderRepository.readAvailableOrder();
@@ -32,15 +38,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void create(Order order) {
         orderRepository.create(order);
-    }
-
-
-    public static OrderService getInstance() {
-
-        if (orderService == null) {
-            orderService = new OrderServiceImpl();
-        }
-        return orderService;
     }
 
     @Override

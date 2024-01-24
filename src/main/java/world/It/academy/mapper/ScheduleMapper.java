@@ -1,13 +1,12 @@
 package world.It.academy.mapper;
 
 import world.It.academy.entities.WorkSchedule;
-import world.It.academy.entities.Worker;
 
 import static world.It.academy.utils.Constants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
-import java.sql.Time;
+import java.time.LocalTime;
 
 public class ScheduleMapper {
     private static ScheduleMapper scheduleMapper;
@@ -20,12 +19,11 @@ public class ScheduleMapper {
 
     private ScheduleMapper() {
     }
-    public WorkSchedule buildSchedule(HttpServletRequest request, Worker worker){
+    public WorkSchedule buildSchedule(HttpServletRequest request){
         return WorkSchedule.builder()
                 .dateWork(LocalDate.parse(request.getParameter(DATE_WORK)))
-                .startTime(Time.valueOf(request.getParameter(START_TIME)))
-                .endTime(Time.valueOf(request.getParameter(END_TIME)))
-                .worker(worker)
+                .startTime(LocalTime.parse(request.getParameter(START_TIME)))
+                .endTime(LocalTime.parse(request.getParameter(END_TIME)))
                 .build();
     }
 }

@@ -20,19 +20,19 @@ public class Order {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "DESCRIBE")
+    @Column(name = "DESCRIBE", nullable = false)
     private String describe;
 
-    @Column(name = "COST")
+    @Column(name = "COST", nullable = false)
     private Float cost;
 
-    @Column(name = "ADDRESS")
+    @Column(name = "ADDRESS", nullable = false)
     private String address;
 
-    @Column(name = "DELIVERYTIME")
+    @Column(name = "DELIVERYTIME", nullable = false)
     private LocalDateTime deliveryTime;
 
-    @Column(name = "COMPLETED")
+    @Column(name = "COMPLETED", nullable = false)
     private Boolean completed;
 
     @ManyToOne

@@ -19,24 +19,23 @@ public class Constants {
 
     public static final String ID_WORKER = "idWorker";
     public static final String DELIVERY_TIME = "deliveryTime";
-    public static final String COURIERS_PAGE = "/pages/orders/couriersPage.jsp";
+    public static final String COURIERS_PAGE = "/pages/couriers/couriersPage.jsp";
     public static final String ADMIN_PAGE = "/pages/admin/admin.jsp";
     public static final String CREATE_WORKER_PAGE = "/pages/admin/createWorker.jsp";
     public static final String DELETE_WORKER_PAGE = "/pages/admin/deleteWorkers.jsp";
     public static final String READ_WORKERS_PAGE = "/pages/admin/readWorkers.jsp";
     public static final String UPDATE_ACTION_PAGE = "/pages/admin/updateActionWorker.jsp";
     public static final String UPDATE_WORKER_PAGE = "/pages/admin/updateWorkers.jsp";
-    public static final String READ_COMPLETED_COURIERS_ORDERS_PAGE = "/pages/orders/readCompletedOrders.jsp";
-    public static final String READ_ORDERS_PAGE = "/pages/orders/readOrders.jsp";
-    public static final String TAKE_ORDER_PAGE = "/pages/orders/takeOrder.jsp";
+    public static final String READ_COMPLETED_COURIERS_ORDERS_PAGE = "/pages/couriers/readCompletedOrders.jsp";
+    public static final String READ_ORDERS_PAGE = "/pages/couriers/readOrders.jsp";
+    public static final String TAKE_ORDER_PAGE = "/pages/couriers/takeOrder.jsp";
     public static final String ERROR_LOGIN = "/pages/errors/errorLogIn.jsp";
     public static final String ERROR_SING_UP = "/pages/errors/errorSingUp.jsp";
     public static final String ERROR_ACCESS = "/pages/errors/errorAccess.jsp";
     public static final String MAIN_PAGE = "/index.html";
     public static final String WORKER_TYPE = "workerType";
     public static final String READ_BY_SEARCH = "/pages/admin/readBySearch.jsp";
-
     public static final String READ_SCHEDULE_WORKER = "/pages/schedules/readScheduleWorker.jsp";
-
-    public static final String COMPLETE_ORDER = "/pages/orders/completeOrder.jsp";
+    public static final String COMPLETE_ORDER = "/pages/couriers/completeOrder.jsp";
+    public static final String WORKERS_PAGE = "/pages/schedules/workersPage.jsp";
 }
